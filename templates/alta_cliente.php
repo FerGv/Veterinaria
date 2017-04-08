@@ -1,17 +1,17 @@
 <?php
     if (!$_POST) {
-        header("Location:create_form.html");
+        header("Location:client_form.html");
     }
 
     include("conexion.php");
 
     $rfc = $_POST['rfc'];
     $nombre = $_POST['nombre'];
-    $apellido_p = $_POST['apellido_p'];
-    $apellido_m = $_POST['apellido_m'];
-    $edad = $_POST['edad'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
 
-    $insertar = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$apellido_p', '$apellido_m', '$edad')";
+    $insertar = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
 
     $resultado = mysqli_query($conexion, $insertar);
 
