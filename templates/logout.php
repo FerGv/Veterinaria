@@ -4,4 +4,7 @@
         session_destroy();
         header("Location:../index.html");
     }
+    else {
+        header("Location:login.html");
+    }
 ?>
