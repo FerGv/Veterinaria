@@ -11,8 +11,15 @@
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
 
-    $insertar = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
+    if ($resultado = mysqli_query($conexion, "SELECT * FROM cliente WHERE rfc_cliente='$rfc'")) {
+        echo "<script>
+                alert('Usuario ya existente');
+                window.history.go(-1);
+            </script>";
+        exit;
+    }
 
+    $insertar = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
     $resultado = mysqli_query($conexion, $insertar);
 
     if (!$resultado) {
