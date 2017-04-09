@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if ($_SESSION['nombre']) {
+        header("Location:bienvenida.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

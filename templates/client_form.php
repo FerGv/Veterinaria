@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if (!$_SESSION || $_SESSION['tipo'] == 2) {
+        header("Location:login_form.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

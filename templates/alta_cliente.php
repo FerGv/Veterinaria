@@ -1,9 +1,9 @@
 <?php
     if (!$_POST) {
-        header("Location:login.html");
+        header("Location:login_form.php");
     }
     elseif ((!$_POST['rfc']) || (!$_POST['nombre']) || (!$_POST['direccion']) || (!$_POST['telefono']) || (!$_POST['email'])) {
-        header("Location:client_form.html");
+        header("Location:client_form.php");
     }
     else {
         include("conexion.php");
