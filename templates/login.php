@@ -7,10 +7,10 @@
 
     include("conexion.php");
 
-    $rfc = $_POST['rfc'];
     $nombre = $_POST['nombre'];
+    $pass = $_POST['pass'];
 
-    $buscar = "SELECT * FROM cliente WHERE rfc_cliente='$rfc' AND nombre_cliente='$nombre'";
+    $buscar = "SELECT * FROM usuario WHERE nombre_usuario='$nombre' AND pass_usuario='$pass'";
 
     $resultado = mysqli_query($conexion, $buscar);
 
@@ -28,8 +28,8 @@
         //     }
         // }
         $usuario = mysqli_fetch_assoc($resultado);
-        $_SESSION['rfc'] = $usuario['rfc_cliente'];
-        $_SESSION['nombre'] = $usuario['nombre_cliente'];
+        $_SESSION['id'] = $usuario['id_usuario'];
+        $_SESSION['nombre'] = $usuario['nombre_usuario'];
         header("Location:bienvenida.php");
     }
 
