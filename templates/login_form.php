@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if ($_SESSION['nombre']) {
+    if (@$_SESSION['nombre']) {
         header("Location:bienvenida.php");
     }
 ?>
