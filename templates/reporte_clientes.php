@@ -26,7 +26,7 @@
                 <a href="reporte_mascotas.php?cliente=<?php echo $cliente['rfc_cliente'] ?>"><h1 class="card--title__name"><?php echo $cliente['rfc_cliente'] ?></h1></a>
                 <?php if ($_SESSION['tipo'] != 2) { ?>
                     <nav class="card--title__menu">
-                        <a href="modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Modificar</a>
+                        <a href="form_modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Modificar</a>
                         <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Eliminar</a>
                     </nav>
                 <?php } ?>
