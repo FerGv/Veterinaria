@@ -8,7 +8,7 @@
         $id_mascota = $_GET['mascota'];
         $cliente = $_GET['cliente'];
         $eliminar_mascota = "DELETE FROM mascota WHERE id_mascota='$id_mascota' AND rfc_cliente='$cliente'";
-        $resultado =  mysqli_query($conexion, $eliminar_mascota);
+        $resultado = mysqli_query($conexion, $eliminar_mascota);
 
         if (!$resultado) {
             echo "Error";
