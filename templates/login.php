@@ -25,11 +25,6 @@
             exit;
         }
         else {
-            // while($usuario = mysqli_fetch_assoc($resultado)){
-            //     foreach ($usuario as $campo => $valor) {
-            //         echo "$campo: $valor <br>";
-            //     }
-            // }
             $usuario = mysqli_fetch_assoc($resultado);
             $_SESSION['nombre'] = $usuario['nombre_usuario'];
             $_SESSION['tipo'] = $usuario['tipo_usuario'];

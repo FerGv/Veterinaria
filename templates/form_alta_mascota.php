@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <form action="alta_mascota.php" method="post">
+    <form action="alta_mascota.php?cliente=<?php echo $_GET['cliente']; ?>" method="post">
         <h1 class="form__title">Mascota</h1>
         <input type="text" name="nombre" placeholder="Nombre" required class="form__input"><br>
         <input type="text" name="especie" placeholder="Especie" required class="form__input"><br>

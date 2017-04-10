@@ -26,11 +26,15 @@
     <h1><?php echo "Bienvenido $nombre"; ?></h1>
     <br>
     <?php if ($_SESSION['tipo'] != 2) { ?>
-        <a href="form_cliente.php">Registrar cliente</a>
-        <a href="form_mascota.php">Registrar mascota</a>
-        <a href="form_reporte.php">Consultar clientes</a>
-        <br><br>
+        <a href="form_alta_cliente.php">Registrar cliente</a>
+        <a href="form_alta_mascota.php">Registrar mascota</a>
+        <a href="reporte_clientes.php">Consultar clientes</a>
+    <?php } else {?>
+        <a href="reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>">Consultar mascotas</a>
+        <a href="#">Agendar cita</a>
+        <a href="#">Consultar citas</a>
     <?php } ?>
+    <br><br>
     <a href="logout.php">Cerrar sesión</a>
 </body>
 </html>
