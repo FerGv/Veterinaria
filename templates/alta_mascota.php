@@ -1,9 +1,9 @@
 <?php
     if (!$_POST) {
-        header("Location:pet_form.php");
+        header("Location:form_mascota.php");
     }
     elseif ((!$_POST['nombre']) || (!$_POST['especie']) || (!$_POST['raza']) || (!$_POST['color']) || (!$_POST['tamanio']) || (!$_POST['senia_particular']) || (!$_POST['fecha_nacimiento'])) {
-        header("Location:pet_form.php");
+        header("Location:form_mascota.php");
     }
     else {
         include("conexion.php");
@@ -20,6 +20,7 @@
         
         $resultado_mascota = mysqli_query($conexion, $crear_mascota);
 
+        echo "<script>alert('Mascota registrada con éxito.');</script>";
         header("Location:bienvenida.php");
 
         mysqli_close($conexion);

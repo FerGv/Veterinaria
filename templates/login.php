@@ -2,10 +2,10 @@
     session_start();
 
     if (!$_POST) {
-        header("Location:login_form.php");
+        header("Location:form_login.php");
     }
     elseif ((!$_POST['nombre']) || (!$_POST['pass'])) {
-        header("Location:login_form.php");
+        header("Location:form_login.php");
     }
     else {
         include("conexion.php");

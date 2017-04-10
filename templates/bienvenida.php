@@ -6,7 +6,7 @@
     <?php 
         session_start();
         if (!$_SESSION) {
-            header("Location:login.html");
+            header("Location:form_login.php");
         }
         else {
             include("conexion.php");
@@ -25,6 +25,12 @@
 <body>
     <h1><?php echo "Bienvenido $nombre"; ?></h1>
     <br>
+    <?php if ($_SESSION['tipo'] != 2) { ?>
+        <a href="form_cliente.php">Registrar cliente</a>
+        <a href="form_mascota.php">Registrar mascota</a>
+        <a href="form_reporte.php">Consultar clientes</a>
+        <br><br>
+    <?php } ?>
     <a href="logout.php">Cerrar sesión</a>
 </body>
 </html>

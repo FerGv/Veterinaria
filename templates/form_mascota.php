@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <form action="alta_mascota.php" method="post">
@@ -21,9 +21,9 @@
         <input type="text" name="color" placeholder="Color" required class="form__input"><br>
         <input type="text" name="tamanio" placeholder="Tamaño" required class="form__input"><br>
         <input type="text" name="senia_particular" placeholder="Seña particular" required class="form__input"><br>
-        <div class="fecha">
-            <label for="fecha" class="fecha__label">Fecha de Nacimiento</label>
-            <input type="date" name="fecha_nacimiento" id="fecha" required class="fecha__input">
+        <div class="date">
+            <label for="fecha" class="date__label">Fecha de Nacimiento</label>
+            <input type="date" name="fecha_nacimiento" id="fecha" required class="date__input">
         </div><br>
         <input type="submit" value="Registrar" class="form__submit">
     </form>

@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+}
 /*******************************************************
                 FORM GENERAL
 ********************************************************/
@@ -28,7 +31,7 @@ form {
 
 }
 /*******************************************************
-                CLIENT_FORM
+                FORM_CLIENTE
 ********************************************************/
 .password {
     width: 75%;
@@ -46,19 +49,36 @@ form {
     float: right;
 }
 /*******************************************************
-                PET_FORM
+                FORM_MASCOTA
 ********************************************************/
-.fecha {
+.date {
     width: 75%;
     margin: auto;
 }
-.fecha__label {
+.date__label {
     padding: 10px 0;
     width: 50%;
     float: left;
 }
-.fecha__input {
+.date__input {
     padding: 10px;
     width: 50%;
     float: right;
+}
+/*******************************************************
+                FORM_REPORTE
+********************************************************/
+.card {
+    width: 25%;
+    float: left;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin: 10px 20px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.8);
+    padding: 10px
+}
+.card__title {
+
+}
+.card__data {
+
 }

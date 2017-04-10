@@ -1,9 +1,9 @@
 <?php
     if (!$_POST) {
-        header("Location:login_form.php");
+        header("Location:form_login.php");
     }
     elseif ((!$_POST['rfc']) || (!$_POST['nombre']) || (!$_POST['direccion']) || (!$_POST['telefono']) || (!$_POST['email'])) {
-        header("Location:client_form.php");
+        header("Location:form_cliente.php");
     }
     else {
         include("conexion.php");
@@ -28,7 +28,8 @@
         $resultado_cliente = mysqli_query($conexion, $crear_cliente);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);
 
-        header("Location:bienvenida.php");
+        echo "<script>alert('Cliente registrado con éxito.');</script>";
+        header("Location:form_mascota.php");
 
         mysqli_close($conexion);
     }
