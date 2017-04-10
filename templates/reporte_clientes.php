@@ -27,7 +27,7 @@
                 <?php if ($_SESSION['tipo'] != 2) { ?>
                     <nav class="card--title__menu">
                         <a href="modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Modificar</a>
-                        <a href="borrar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Borrar</a>
+                        <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Eliminar</a>
                     </nav>
                 <?php } ?>
             </div>
