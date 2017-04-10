@@ -6,6 +6,11 @@
     else {
         include("conexion.php");
         $cliente = $_GET['cliente'];
+
+        if (($_SESSION['tipo'] == 2) && ($cliente != $_SESSION['nombre'])) {
+            header("Location:form_login.php");
+        }
+
         $buscar_mascotas = "SELECT * FROM mascota WHERE rfc_cliente='$cliente'";
         $resultado = mysqli_query($conexion, $buscar_mascotas);
     }
@@ -23,7 +28,15 @@
         while($mascota = mysqli_fetch_assoc($resultado)) {
     ?>
         <div class="card">
-            <h1 class="card__title"><?php echo $mascota['nombre_mascota'] ?></h1>
+            <div class="card--title">
+                <h1 class="card--title__name"><?php echo $mascota['nombre_mascota'] ?></h1>
+                <?php if ($_SESSION['tipo'] != 2) { ?>
+                    <nav class="card--title__menu">
+                        <a href="modificar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>" class="card--title__item">Modificar</a>
+                        <a href="borrar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>" class="card--title__item">Borrar</a>
+                    </nav>
+                <?php } ?>
+            </div>
             <p class="card__data"><?php echo $mascota['especie_mascota'] ?></p>
             <p class="card__data"><?php echo $mascota['raza_mascota'] ?></p>
             <p class="card__data"><?php echo $mascota['color_mascota'] ?></p>
