@@ -19,7 +19,42 @@ a {
 .contenido {
     align-self: center;
     width: 70%;
-    background: #000;
+    max-width: 500px;
+    padding: 20px 0 0;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+.contenido__title {
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: rgba(0,0,100,0.8);
+}
+.contenido__link {
+    color: #fff;
+    width: 80%;
+    margin: 0 auto 5px;
+    display: block;
+    padding: 15px 0;
+}
+.create {
+    background: rgba(0,0,100,0.6);
+}
+.create:hover {
+    background: rgba(0,0,100,0.8);
+}
+.report {
+    background: rgba(0,0,250,0.6);
+}
+.report:hover {
+    background: rgba(0,0,250,0.8);
+}
+.logout {
+    background: rgba(250,0,0,0.8);
+    margin-bottom: 20px;
+}
+.logout:hover {
+    background: rgba(200,0,0,1);
 }
 /*******************************************************
                 FORM GENERAL
