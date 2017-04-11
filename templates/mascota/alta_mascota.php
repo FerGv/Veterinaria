@@ -1,4 +1,4 @@
-<?php
+    <?php
     if (!$_POST) {
         header("Location:form_alta_mascota.php");
     }
@@ -8,7 +8,12 @@
     else {
         include("../conexion.php");
 
-        $cliente = $_GET['cliente'];
+        if ($_GET['cliente']) {
+            $cliente = $_GET['cliente'];
+        }
+        else {
+            $cliente = $_POST['rfc'];
+        }
         $nombre = $_POST['nombre'];
         $especie = $_POST['especie'];
         $raza = $_POST['raza'];

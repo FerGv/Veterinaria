@@ -14,7 +14,7 @@
 </head>
 <body>
     <section class="wrap">
-        <form action="alta_mascota.php?cliente=<?php echo $_GET['cliente']; ?>" method="post">
+        <form action="alta_mascota.php<?php if (@$_GET['cliente']) {echo "?cliente=$_GET[cliente]";} ?>" method="post">
             <h1 class="form__title">Mascota</h1>
             <input type="text" name="nombre" placeholder="Nombre" required class="form__input"><br>
             <input type="text" name="especie" placeholder="Especie" required class="form__input"><br>
@@ -26,6 +26,7 @@
                 <label for="fecha" class="date__label">Fecha de Nacimiento</label>
                 <input type="date" name="fecha_nacimiento" id="fecha" required class="date__input">
             </div><br>
+            <input type="text" name="rfc" placeholder="RFC Cliente" required class="form__input" <?php if (@$_GET['cliente']) {echo "value='$_GET[cliente]' disabled";} ?>><br>
             <input type="submit" value="Registrar" class="form__button">
         </form>
     </section>
