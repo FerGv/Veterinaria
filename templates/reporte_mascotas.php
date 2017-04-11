@@ -25,6 +25,10 @@
 </head>
 <body>
     <?php 
+        if (mysqli_num_rows($resultado) == 0) {
+            echo "Sin mascotas";
+            exit;
+        }
         while($mascota = mysqli_fetch_assoc($resultado)) {
     ?>
         <div class="card">

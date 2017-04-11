@@ -2,58 +2,94 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all .5s;
 }
 a {
     text-decoration: none;
+}
+.wrap {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
 }
 /*******************************************************
                 FORM GENERAL
 ********************************************************/
 form {
-    width: 60%;
+    align-self: center;
+    width: 70%;
+    height: auto;
     max-width: 500px;
-    margin: 30px auto 0;
-    background-color: #d9d9d9;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px 0 0;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 .form__title {
-    padding-bottom: 20px;
+    margin-bottom: 30px;
     font-size: 3em;
-    color: rgb(0,0,150);
+    color: rgba(0,0,150,0.7);
 }
-.form__input, .form__submit {
-    width: 75%;
-    margin: 10px;
+.form__input, .form__button {
+    width: 80%;
+    margin-bottom: 30px;
     padding: 10px;
+    font-size: 1.1em;
 }
-.form__submit {
+.form__input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,150,0.4);
+    background: none;
+    color: rgba(0,0,150,0.7);
+    transition: border-bottom 0s;
+}
+.form__input:hover {
+    border-bottom: 1px solid rgba(0,0,150,1);
+}
 
+.form__input:focus, .form__input:active {
+    border-bottom: 2px solid rgba(0,0,150,1);
+}
+.form__button {
+    border: none;
+    background: rgba(0,0,150,0.4);
+    color: #fff;
+}
+.form__button:hover {
+    background: rgba(0,0,150,0.7);
 }
 /*******************************************************
-                FORM_ALTA_CLIENTE
+                FORM_LOGIN
 ********************************************************/
 .password {
-    width: 75%;
+    width: 80%;
     margin: auto;  
-}
-.password__input, .password__button {
-    padding: 10px;
 }
 .password__input {
     width: 85%;
     float: left;
 }
 .password__button {
+    padding: 10px;
     width: 15%;
     float: right;
+    border: none;
+    background: rgba(0,0,150,0.4);
+    color: #fff;
+}
+.password__button:hover {
+    background: rgba(0,0,150,0.7);
 }
 /*******************************************************
                 FORM_ALTA_MASCOTA
 ********************************************************/
 .date {
-    width: 75%;
+    width: 80%;
     margin: auto;
+    color: rgba(0,0,150,0.7);
+    margin-bottom: 60px;
 }
 .date__label {
     padding: 10px 0;
@@ -61,6 +97,7 @@ form {
     float: left;
 }
 .date__input {
+    color: rgba(0,0,150,0.7);
     padding: 10px;
     width: 50%;
     float: right;
@@ -84,10 +121,8 @@ form {
 .card--title__name {
     width: 60%;
     display: inline-block;
-    /*background-color: rgba(0,0,0,0.3);*/
 }
 .card--title__menu {
-    /*background-color: rgba(0,0,0,0.5);*/
     width: 40%;
     float: right;
     text-align: center;
