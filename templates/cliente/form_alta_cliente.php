@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if (!$_SESSION || $_SESSION['tipo'] == 2) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
 ?>
 
@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <section class="wrap">

@@ -1,12 +1,12 @@
 <?php
     if (!$_POST) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
     elseif ((!$_POST['rfc']) || (!$_POST['nombre']) || (!$_POST['direccion']) || (!$_POST['telefono']) || (!$_POST['email'])) {
         header("Location:form_alta_cliente.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
 
         $rfc = $_POST['rfc'];
         $nombre = $_POST['nombre'];
@@ -29,7 +29,7 @@
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);
 
         echo "<script>alert('Cliente registrado con éxito.');</script>";
-        header("Location:form_alta_mascota.php?cliente=$rfc");
+        header("Location:../mascota/form_alta_mascota.php?cliente=$rfc");
 
         mysqli_close($conexion);
     }

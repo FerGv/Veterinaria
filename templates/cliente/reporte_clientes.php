@@ -1,10 +1,10 @@
 <?php 
     session_start();
     if (!$_SESSION || $_SESSION['tipo'] == 2) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
         $buscar_clientes = "SELECT * FROM cliente";
         $resultado = mysqli_query($conexion, $buscar_clientes);
     }
@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte clientes</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <?php 

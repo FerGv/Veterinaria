@@ -1,14 +1,14 @@
 <?php 
     session_start();
     if (!$_SESSION) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
         $cliente = $_GET['cliente'];
 
         if (($_SESSION['tipo'] == 2) && ($cliente != $_SESSION['nombre'])) {
-            header("Location:form_login.php");
+            header("Location:../form_login.php");
         }
 
         $buscar_mascotas = "SELECT * FROM mascota WHERE rfc_cliente='$cliente'";
@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte mascotas</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <?php 

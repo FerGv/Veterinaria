@@ -6,7 +6,7 @@
         header("Location:form_modificar_mascota.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
 
         $id_mascota = $_GET['mascota'];
         $cliente = $_GET['cliente'];

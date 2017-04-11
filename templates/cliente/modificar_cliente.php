@@ -6,7 +6,7 @@
         header("Location:form_modificar_cliente.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
 
         $cliente = $_GET['cliente'];
         $rfc = $_POST['rfc'];

@@ -1,10 +1,10 @@
 <?php  
     session_start();
     if (!$_SESSION || $_SESSION['tipo'] == 2) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
         $cliente = $_GET['cliente'];
         $eliminar_mascotas = "DELETE FROM mascota WHERE rfc_cliente='$cliente'";
         $eliminar_cliente = "DELETE FROM cliente WHERE rfc_cliente='$cliente'";

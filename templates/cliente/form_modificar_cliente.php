@@ -1,10 +1,10 @@
 <?php 
     session_start();
     if (!$_SESSION || $_SESSION['tipo'] == 2) {
-        header("Location:form_login.php");
+        header("Location:../form_login.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
         $rfc_cliente = $_GET['cliente'];
         $buscar_cliente = "SELECT * FROM cliente WHERE rfc_cliente='$rfc_cliente'";
         $resultado = mysqli_query($conexion, $buscar_cliente);
@@ -17,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <section class="wrap">

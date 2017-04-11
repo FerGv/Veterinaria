@@ -6,7 +6,7 @@
         header("Location:form_alta_mascota.php");
     }
     else {
-        include("conexion.php");
+        include("../conexion.php");
 
         $cliente = $_GET['cliente'];
         $nombre = $_POST['nombre'];
