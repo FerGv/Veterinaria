@@ -33,9 +33,11 @@
                 <a href="medico/form_alta_medico.php" class="contenido__link create">Registrar médico</a>
                 <a href="mascota/form_alta_mascota.php" class="contenido__link create">Registrar mascota</a>
                 <a href="servicio/form_alta_servicio.php" class="contenido__link create">Registrar servicio</a>
-                <a href="cliente/reporte_clientes.php" class="contenido__link report">Consultar clientes</a>
-                <a href="medico/reporte_medicos.php" class="contenido__link report">Consultar medicos</a>
-                <a href="servicio/reporte_servicios.php" class="contenido__link report">Consultar servicios</a>
+                <a href="control_servicio/form_alta_control.php" class="contenido__link create">Registrar consulta</a>
+                <a href="cliente/reporte_clientes.php" class="contenido__link report">Reporte clientes</a>
+                <a href="medico/reporte_medicos.php" class="contenido__link report">Reporte medicos</a>
+                <a href="servicio/reporte_servicios.php" class="contenido__link report">Reporte servicios</a>
+                <a href="control_servicio/reporte_control.php" class="contenido__link report">Reporte consultas</a>
             <?php } else {?>
                 <a href="mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="contenido__link report">Consultar mascotas</a>
                 <a href="#" class="contenido__link">Agendar cita</a>
