@@ -4,15 +4,105 @@
     box-sizing: border-box;
     transition: all .5s;
 }
-a {
-    text-decoration: none;
-}
+ul { list-style: none; }
+a { text-decoration: none; }
 .wrap {
     display: flex;
     width: 100%;
-    height: 100%;
     justify-content: center;
     padding: 20px 0;
+}
+/*******************************************************
+                HEADER
+********************************************************/
+header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.header--menu, .header--title, .header--nav {
+    display: flex;
+    justify-content: center;
+}
+.header--menu {
+    background: rgba(0,0,250,0.6);
+    width: 10%;
+    position: relative;
+}
+.header--menu__button {
+    align-self: center;
+    border: 1px solid #fff;
+    padding: 10px;
+    background: none;
+    color: #fff;
+    font-size: 1.1em;
+}
+.header--menu__button:hover {
+    background: #fff;
+    color: blue;
+}
+.header--menu__slider {
+    z-index: 9999;
+    width: 300px;
+    position: absolute;
+    top: 70px;
+    left: -300px;
+    height: auto;
+    background: #fff;
+    border: 1px solid rgba(0,0,250,0.6);
+    box-shadow: 0 2px 7px rgba(0,0,250,0.8);
+    /*overflow: hidden;*/
+}
+.header--menu__link {
+    border: 1px solid rgba(0,0,250,0.1);
+    display: block;
+    padding: 20px 0;
+    color: rgba(0,0,250,0.6);
+    transition: font-size .5s;
+}
+.header--menu__link:hover {
+    font-size: 1.2em;
+    background: rgba(0,0,250,0.6);
+    color: #fff;
+}
+.header--title {
+    background: rgba(0,0,250,0.6);
+    width: 80%;
+}
+.header--title__name {
+    align-self: center;
+    font-size: 2em;
+    color: #fff;
+}
+.header--nav {
+    width: 10%;
+    background: rgba(250,0,0,0.6);
+    font-size: 1.2em;
+}
+.header--nav__link {
+    align-self: center;
+    color: #fff;
+}
+.header--nav:hover {
+    background: rgba(250,0,0,0.8);
+}
+/*******************************************************
+                FOOTER
+********************************************************/
+footer {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+.copy {
+    align-self: center;
+    color: blue;
+}
+.copy a:visited {
+    color: blue;
 }
 /*******************************************************
                 GENERAL
@@ -22,7 +112,7 @@ a {
     width: 70%;
     height: auto;
     max-width: 500px;
-    padding: 20px 0 0;
+    padding: 20px 0;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.5);
     box-shadow: 0 1px 3px rgba(0,0,0,0.8);
@@ -50,13 +140,6 @@ a {
 }
 .report:hover {
     background: rgba(0,0,250,0.8);
-}
-.logout {
-    background: rgba(250,0,0,0.8);
-    margin-bottom: 20px;
-}
-.logout:hover {
-    background: rgba(200,0,0,1);
 }
 /*******************************************************
                 FORM GENERAL

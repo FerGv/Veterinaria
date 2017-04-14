@@ -19,7 +19,7 @@
 </head>
 <body>
     <section class="wrap">
-        <form action="alta_cliente.php" method="post">
+        <form action="alta_control.php" method="post">
             <h1 class="form__title">Consulta</h1>
             <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus><br>
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input"><br>
@@ -32,7 +32,7 @@
             <?php 
                 while($servicio = mysqli_fetch_assoc($resultado)) {
             ?>
-                <input type="checkbox" name="<?php echo "check$servicio[clave_servicio]" ?>" id="<?php echo "check$servicio[clave_servicio]" ?>" class="service__checkbox">
+                <input type="checkbox" name="servicios" id="<?php echo "check$servicio[clave_servicio]" ?>" class="service__checkbox">
                 <label for="<?php echo "check$servicio[clave_servicio]" ?>" class="service__label"><?php echo $servicio['descripcion_servicio'] ?></label>
             <?php
                 }
