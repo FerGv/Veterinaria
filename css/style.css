@@ -53,18 +53,35 @@ header {
     background: #fff;
     border: 1px solid rgba(0,0,250,0.6);
     box-shadow: 0 2px 7px rgba(0,0,250,0.8);
-    /*overflow: hidden;*/
 }
+.categoria > .header--menu__link {
+    background: #fff;
+}
+.categoria > .header--menu__link:hover {
+    background: rgba(0,0,250,0.55);
+}
+.categoria > .active {
+    font-size: 1.3em;
+    color: #fff;
+    background: rgba(0,0,250,0.55);
+}
+.categoria ul {
+    height: 0;
+    overflow: hidden;
+} 
 .header--menu__link {
     border: 1px solid rgba(0,0,250,0.1);
     display: block;
     padding: 20px 0;
     color: rgba(0,0,250,0.6);
+    background: rgba(0,0,0,0.05);
     transition: font-size .5s;
+    width: 100%;
+    font-size: 1.1em;
 }
 .header--menu__link:hover {
-    font-size: 1.2em;
-    background: rgba(0,0,250,0.6);
+    font-size: 1.3em;
+    background: rgba(0,0,250,0.4);
     color: #fff;
 }
 .header--title {
