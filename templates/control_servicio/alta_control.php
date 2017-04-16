@@ -37,7 +37,7 @@
         }
 
         echo "<script>alert('Consulta registrada con éxito.');</script>";
-        header("Location:control_servicio/reporte_control.php");
+        header("Location:reporte_control.php");
 
         mysqli_close($conexion);
     }

@@ -1,25 +1,47 @@
 <?php
     if (!$_POST) {
-        header("Location:form_modificar_cliente.php");
+        header("Location:form_modificar_control.php");
     }
-    elseif ((!$_POST['rfc']) || (!$_POST['nombre']) || (!$_POST['direccion']) || (!$_POST['telefono']) || (!$_POST['email'])) {
-        header("Location:form_modificar_cliente.php");
+    elseif ((!$_POST['rfc_cliente']) || (!$_POST['nombre_mascota']) || (!$_POST['rfc_medico']) || (!$_POST['fecha_control']) || (!$_POST['servicios'])) {
+        header("Location:form_modificar_control.php");
     }
     else {
         include("../conexion.php");
 
-        $cliente = $_GET['cliente'];
-        $rfc = $_POST['rfc'];
-        $nombre = $_POST['nombre'];
-        $direccion = $_POST['direccion'];
-        $telefono = $_POST['telefono'];
-        $email = $_POST['email'];
+        $clave_control = $_GET['control'];
+        $rfc_cliente = $_POST['rfc_cliente'];
+        $nombre_mascota = $_POST['nombre_mascota'];
+        $rfc_medico = $_POST['rfc_medico'];
+        $fecha_control = $_POST['fecha_control'];
+        $servicios = $_POST['servicios'];
 
-        $modificar_cliente = "UPDATE cliente SET rfc_cliente='$rfc', nombre_cliente='$nombre', direccion_cliente='$direccion', telefono_cliente='$telefono', email_cliente='$email' WHERE rfc_cliente='$cliente'";
-        $resultado = mysqli_query($conexion, $modificar_cliente);
+        $buscar_mascota = mysqli_query($conexion, "SELECT id_mascota FROM mascota WHERE nombre_mascota='$nombre_mascota' AND rfc_cliente='$rfc_cliente'");
+        $mascota = mysqli_fetch_assoc($buscar_mascota);
 
-        echo "<script>alert('Mascota modificada con éxito.');</script>";
-        header("Location:reporte_clientes.php");
+        if (mysqli_num_rows($buscar_mascota) == 0) {
+            echo "<script>
+                    alert('Datos incorrectos');
+                    window.history.go(-1);
+                </script>";
+            exit;
+        }
+
+        $modificar_control = "UPDATE control_servicio SET fecha_control='$fecha_control', id_mascota='$mascota[id_mascota]', rfc_medico='$rfc_medico' WHERE clave_control_servicio='$clave_control'";
+        $resultado = mysqli_query($conexion, $modificar_control);
+
+
+        $borrar_servicios = mysqli_query($conexion, "DELETE FROM control_servicio_servicio WHERE clave_control_servicio='$clave_control'");
+
+        foreach ($servicios as $clave_servicio) {
+            // $buscar_servicio = mysqli_query($conexion, "SELECT * FROM control_servicio_servicio WHERE clave_servicio='$clave_servicio' AND clave_control_servicio='$clave_control'");
+
+            // if (mysqli_num_rows($buscar_servicio) == 0) {
+                $crear_servicio = mysqli_query($conexion, "INSERT INTO control_servicio_servicio VALUES ('$clave_control', '$clave_servicio')");
+            // }
+        }
+
+        echo "<script>alert('Consulta modificada con éxito.');</script>";
+        header("Location:reporte_control.php");
 
         mysqli_close($conexion);
     }

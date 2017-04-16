@@ -23,7 +23,7 @@
             <h1 class="form__title">Consulta</h1>
             <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus><br>
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input"><br>
-            <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input" autofocus><br>
+            <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input"><br>
             <div class="date">
                 <label for="fecha" class="date__label control__label">Fecha</label>
                 <input type="date" name="fecha_control" id="fecha" required class="date__input control__input">
