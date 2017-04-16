@@ -32,7 +32,7 @@
             <?php 
                 while($servicio = mysqli_fetch_assoc($resultado)) {
             ?>
-                <input type="checkbox" name="servicios" id="<?php echo "check$servicio[clave_servicio]" ?>" class="service__checkbox">
+                <input type="checkbox" name="servicios[]" id="<?php echo "check$servicio[clave_servicio]" ?>" value="<?php echo "$servicio[clave_servicio]" ?>" class="service__checkbox">
                 <label for="<?php echo "check$servicio[clave_servicio]" ?>" class="service__label"><?php echo $servicio['descripcion_servicio'] ?></label>
             <?php
                 }

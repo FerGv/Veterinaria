@@ -2,7 +2,7 @@
     if (!$_POST) {
         header("Location:../form_login.php");
     }
-    elseif ((!$_POST['rfc_cliente']) || (!$_POST['nombre_mascota']) || (!$_POST['rfc_medico']) || (!$_POST['fecha_control'])) {
+    elseif ((!$_POST['rfc_cliente']) || (!$_POST['nombre_mascota']) || (!$_POST['rfc_medico']) || (!$_POST['fecha_control']) || (!$_POST['servicios'])) {
         header("Location:form_alta_control.php");
     }
     else {
@@ -14,25 +14,31 @@
         $fecha_control = $_POST['fecha_control'];
         $servicios = $_POST['servicios'];
 
-        var_dump($servicios);
+        $buscar_mascota = mysqli_query($conexion, "SELECT id_mascota FROM mascota WHERE nombre_mascota='$nombre_mascota' AND rfc_cliente='$rfc_cliente'");
+        $mascota = mysqli_fetch_assoc($buscar_mascota);
 
-        // $buscar_cliente = mysqli_query($conexion, "SELECT * FROM cliente WHERE rfc_cliente='$rfc'");
-        // if (mysqli_num_rows($buscar_cliente) > 0) {
-        //     echo "<script>
-        //             alert('RFC ya existente');
-        //             window.history.go(-1);
-        //         </script>";
-        //     exit;
-        // }
+        $buscar_control = mysqli_query($conexion, "SELECT * FROM control_servicio WHERE id_mascota='$mascota[id_mascota]' AND fecha_control='$fecha_control'");
+        if (mysqli_num_rows($buscar_control) > 0) {
+            echo "<script>
+                    alert('Consulta ya registrada');
+                    window.history.go(-1);
+                </script>";
+            exit;
+        }
 
-        // $crear_cliente = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
-        // $crear_usuario = "INSERT INTO usuario VALUES ('$rfc', 'veterinaria123', 2)";
-        // $resultado_cliente = mysqli_query($conexion, $crear_cliente);
-        // $resultado_usuario = mysqli_query($conexion, $crear_usuario);
+        $crear_control = "INSERT INTO control_servicio(fecha_control, id_mascota, rfc_medico) VALUES ('$fecha_control', '$mascota[id_mascota]', '$rfc_medico')";
+        $resultado_control = mysqli_query($conexion, $crear_control);
+        
+        $buscar_control = mysqli_query($conexion, "SELECT clave_control_servicio FROM control_servicio WHERE id_mascota='$mascota[id_mascota]' AND fecha_control='$fecha_control'");
+        $control = mysqli_fetch_assoc($buscar_control);
+        foreach ($servicios as $clave_servicio) {
+            $crear_servicio = "INSERT INTO control_servicio_servicio VALUES ('$control[clave_control_servicio]', '$clave_servicio')";
+            $resultado_servicio = mysqli_query($conexion, $crear_servicio);
+        }
 
-        // echo "<script>alert('Cliente registrado con éxito.');</script>";
-        // header("Location:../mascota/form_alta_mascota.php?cliente=$rfc");
+        echo "<script>alert('Consulta registrada con éxito.');</script>";
+        header("Location:control_servicio/reporte_control.php");
 
-        // mysqli_close($conexion);
+        mysqli_close($conexion);
     }
 ?>
