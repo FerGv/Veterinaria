@@ -25,8 +25,12 @@
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input"><br>
             <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input"><br>
             <div class="date">
-                <label for="fecha" class="date__label control__label">Fecha</label>
-                <input type="date" name="fecha_control" id="fecha" required class="date__input control__input">
+                <label for="fecha_control" class="date__label control__label">Consulta actual</label>
+                <input type="date" name="fecha_control" id="fecha_control" required class="date__input control__input">
+            </div><br>
+            <div class="date">
+                <label for="fecha_seguimiento" class="date__label control__label">Próxima consulta</label>
+                <input type="date" name="fecha_seguimiento" id="fecha_seguimiento" required class="date__input control__input">
             </div><br>
             <div class="service">
             <?php 
