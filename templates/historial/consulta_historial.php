@@ -35,12 +35,6 @@
         <div class="card">
             <div class="card--title">
                 <h1 class="card--title__name"><?php echo $historial['fecha_control'] ?></h1>
-                <?php if ($_SESSION['tipo'] != 2) { ?>
-                    <nav class="card--title__menu">
-                        <a href="form_modificar_historial.php?historial=<?php echo $historial['id_historial'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item">Modificar</a>
-                        <a href="eliminar_historial.php?historial=<?php echo $historial['id_historial'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item">Eliminar</a>
-                    </nav>
-                <?php } ?>
             </div>
             <p class="card__data"><?php echo $historial['nombre_medico'] ?></p>
             <?php 

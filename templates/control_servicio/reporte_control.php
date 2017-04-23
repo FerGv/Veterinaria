@@ -28,6 +28,7 @@
                     <nav class="card--title__menu">
                         <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Modificar</a>
                         <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Eliminar</a>
+                        <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Facturar</a>
                     </nav>
                 <?php } ?>
             </div>
