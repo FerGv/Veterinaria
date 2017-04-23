@@ -33,7 +33,9 @@
     ?>
         <div class="card">
             <div class="card--title">
-                <h1 class="card--title__name"><?php echo $mascota['nombre_mascota'] ?></h1>
+                <a href="../historial/consulta_historial.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>">
+                    <h1 class="card--title__name"><?php echo $mascota['nombre_mascota'] ?></h1>
+                </a>
                 <?php if ($_SESSION['tipo'] != 2) { ?>
                     <nav class="card--title__menu">
                         <a href="form_modificar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item">Modificar</a>
