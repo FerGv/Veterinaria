@@ -38,6 +38,20 @@
                             </ul>
                         </li>
                         <li class="categoria">
+                            <input type="button" class="header--menu__link" onclick="Mostrar_Consultas()" value="Consultas">
+                            <ul id="funciones_consultas" style="height: 0px">
+                                <li><a href="control_servicio/form_alta_control.php" class="header--menu__link">Registrar consulta</a></li>
+                                <li><a href="control_servicio/reporte_control.php" class="header--menu__link">Reporte consultas</a></li>
+                            </ul>
+                        </li>
+                        <li class="categoria">
+                            <input type="button" class="header--menu__link" onclick="Mostrar_Facturas()" value="Facturas">
+                            <ul id="funciones_facturas" style="height: 0px">
+                                <li><a href="factura/form_alta_factura.php" class="header--menu__link">Registrar factura</a></li>
+                                <li><a href="factura/reporte_facturas.php" class="header--menu__link">Reporte facturas</a></li>
+                            </ul>
+                        </li>
+                        <li class="categoria">
                             <input type="button" class="header--menu__link" onclick="Mostrar_Mascotas()" value="Mascotas">
                             <ul id="funciones_mascotas" style="height: 0px">
                                 <li><a href="mascota/form_alta_mascota.php" class="header--menu__link">Registrar mascota</a></li>
@@ -57,25 +71,17 @@
                                 <li><a href="servicio/reporte_servicios.php" class="header--menu__link">Reporte servicios</a></li>
                             </ul>
                         </li>
-                        <li class="categoria">
-                            <input type="button" class="header--menu__link" onclick="Mostrar_Consultas()" value="Consultas">
-                            <ul id="funciones_consultas" style="height: 0px">
-                                <li><a href="control_servicio/form_alta_control.php" class="header--menu__link">Registrar consulta</a></li>
-                                <li><a href="control_servicio/reporte_control.php" class="header--menu__link">Reporte consultas</a></li>
-                            </ul>
-                        </li>
-                        <li class="categoria">
-                            <input type="button" class="header--menu__link" onclick="Mostrar_Facturas()" value="Facturas">
-                            <ul id="funciones_facturas" style="height: 0px">
-                                <li><a href="factura/form_alta_factura.php" class="header--menu__link">Registrar factura</a></li>
-                                <li><a href="factura/reporte_facturas.php" class="header--menu__link">Reporte facturas</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 <?php } else {?>
-                    <a href="mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="header--menu__link">Consultar mascotas</a>
-                    <a href="#" class="header--menu__link">Agendar cita</a>
-                    <a href="#" class="header--menu__link">Consultar citas</a>
+                <ul>
+                    <li class="categoria">
+                        <a href="mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="header--menu__link">Consultar mascotas</a>
+                    </li>
+                    <li class="categoria">
+                        <a href="#" class="header--menu__link">Agendar cita</a>
+                        <a href="#" class="header--menu__link">Consultar citas</a>
+                    </li>
+                </ul>
                 <?php } ?>
             </div>
         </div>

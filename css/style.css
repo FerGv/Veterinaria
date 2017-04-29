@@ -11,6 +11,7 @@ a { text-decoration: none; }
     width: 100%;
     justify-content: center;
     padding: 20px 0;
+    flex-wrap: wrap;
 }
 /*******************************************************
                 HEADER
@@ -42,6 +43,7 @@ header {
 .header--menu__button:hover {
     background: #fff;
     color: blue;
+    cursor: pointer;
 }
 .header--menu__slider {
     z-index: 9999;
@@ -96,12 +98,14 @@ header {
 }
 .header--nav {
     width: 10%;
-    background: rgba(250,0,0,0.6);
+    background: rgba(250,0,0,0.5);
     font-size: 1.2em;
 }
 .header--nav__link {
-    align-self: center;
     color: #fff;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
 }
 .header--nav:hover {
     background: rgba(250,0,0,0.8);
@@ -114,6 +118,7 @@ footer {
     height: 60px;
     display: flex;
     justify-content: center;
+    margin-top: 60px;
 }
 .copy {
     align-self: center;
@@ -311,8 +316,7 @@ input[type="checkbox"]:checked + label:before {
 ********************************************************/
 .card {
     min-width: 250px;
-    width: 25%;
-    float: left;
+    width: 20%;
     border: 1px solid rgba(0,0,0,0.3);
     margin: 10px 20px;
     box-shadow: 0 3px 3px rgba(0,0,0,0.8);

@@ -11,6 +11,20 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background-image: url('../img/logo3.png');
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+        .wrap {
+            height: 100vh;
+        }
+        form {
+            align-self: center;
+            background: rgba(255,255,255,0.9);
+        }
+    </style>
 </head>
 <body>
     <section class="wrap">

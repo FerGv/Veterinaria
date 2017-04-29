@@ -1,7 +1,7 @@
 <?php
-    $DB_HOST = '';
-    $DB_USER = '';
+    $DB_HOST = 'localhost';
+    $DB_USER = 'root';
     $DB_PASS = '';
-    $DB_NAME = '';
+    $DB_NAME = 'veterinaria';
     $conexion = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 ?>
