@@ -109,7 +109,7 @@
     </section>
     <footer>
         <div class="copy">
-            <a href="#">&copy Innovasoft 2017</a>
+            <a href="innovasoft.html">&copy Innovasoft 2017</a>
         </div>
     </footer>
 
