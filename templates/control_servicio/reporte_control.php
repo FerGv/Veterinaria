@@ -5,7 +5,7 @@
     }
     else {
         include("../conexion.php");
-        $buscar_controles = "SELECT * FROM control_servicio";
+        $buscar_controles = "SELECT * FROM control_servicio ORDER BY fecha_control DESC";
         $resultado_control = mysqli_query($conexion, $buscar_controles);
     }
 ?>
@@ -92,7 +92,7 @@
         ?>
             <div class="card">
                 <div class="card--title">
-                    <h1 class="card--title__name"><?php echo $control['clave_control_servicio'] ?></h1>
+                    <h1 class="card--title__name"><?php echo $control['fecha_control'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Modificar</a>
@@ -101,7 +101,6 @@
                         </nav>
                     <?php } ?>
                 </div>
-                <p class="card__data"><?php echo $control['fecha_control'] ?></p>
 
                 <?php 
                     $buscar_mascota = mysqli_query($conexion, "SELECT mascota.nombre_mascota AS nombre_mascota FROM control_servicio JOIN mascota WHERE control_servicio.id_mascota = mascota.id_mascota"); 

@@ -101,7 +101,7 @@
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" value="<?php echo $datos['nombre_mascota'] ?>"><br>
             <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input" value="<?php echo $control['rfc_medico'] ?>"><br>
             <div class="date">
-                <label for="fecha" class="date__label control__label">Fecha</label>
+                <label for="fecha" class="date__label control__label">Próxima consulta</label>
                 <input type="date" name="fecha_control" id="fecha" required class="date__input control__input" value="<?php echo $control['fecha_control'] ?>">
             </div><br>
             <div class="service">
