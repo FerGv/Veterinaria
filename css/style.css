@@ -128,7 +128,7 @@ footer {
     color: blue;
 }
 /*******************************************************
-                GENERAL
+                BIENVENIDA
 ********************************************************/
 .contenido {
     align-self: center;
@@ -163,6 +163,21 @@ footer {
 }
 .report:hover {
     background: rgba(0,0,250,0.8);
+}
+.notification {
+    background: rgba(250,0,0,0.7);
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    margin: 0 auto 10px;
+    color: #fff;
+    font-size: 1.2em;
+}
+.notification__title, .notification__item {
+    align-self: center;
+}
+.notification__title {
+    margin-right: 10px;
 }
 /*******************************************************
                 FORM GENERAL

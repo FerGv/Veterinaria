@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte clientes</title>
+    <title>Reporte Consultas</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>

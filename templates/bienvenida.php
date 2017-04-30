@@ -16,6 +16,9 @@
                 $resultado = mysqli_query($conexion, $obtener_nombre);
                 $usuario = mysqli_fetch_assoc($resultado);
                 $nombre = $usuario['nombre_cliente'];
+
+                $fecha = date('Y-m-d');
+                $obtener_avisos = mysqli_query($conexion, "SELECT nombre_mascota FROM mascota, historial WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND historial.id_mascota=mascota.id_mascota AND fechaseg_historial='$fecha'");
             }
             else {
                 $nombre = $_SESSION['nombre'];
@@ -94,7 +97,7 @@
     </header>
     <section class="wrap" id="wrap">
         <section class="contenido"  id="contenido">
-            <h1 class="contenido__title"><?php echo "Bienvenido $nombre"; ?></h1>
+            <h1 class="contenido__title"><?php echo "Bienvenido<br>$nombre"; ?></h1>
             <br>
             <?php if ($_SESSION['tipo'] != 2) { ?>
                 <a href="cliente/form_alta_cliente.php" class="contenido__link create">Registrar cliente</a>
@@ -106,10 +109,18 @@
                 <a href="medico/reporte_medicos.php" class="contenido__link report">Reporte medicos</a>
                 <a href="servicio/reporte_servicios.php" class="contenido__link report">Reporte servicios</a>
                 <a href="control_servicio/reporte_control.php" class="contenido__link report">Reporte consultas</a>
-            <?php } else {?>
+            <?php } else {
+                    if (mysqli_num_rows($obtener_avisos) > 0) { 
+                        while($nombre_mascota = mysqli_fetch_assoc($obtener_avisos)) { ?>
+                        <div class="notification">
+                            <h1 class="notification__title">Avisos:</h1>
+                            <p class="notification__item"><b><?php echo $nombre_mascota['nombre_mascota']; ?></b> tiene una cita hoy</p>
+                            <br><br>
+                        </div>
+                    <?php } } ?>
                 <a href="mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="contenido__link report">Consultar mascotas</a>
-                <a href="#" class="contenido__link create">Agendar cita</a>
-                <a href="#" class="contenido__link report">Consultar citas</a>
+                <a href="cita/form_alta_cita.php" class="contenido__link create">Agendar cita</a>
+                <a href="cita/reporte_citas.php" class="contenido__link report">Consultar citas</a>
             <?php } ?>
         </section>
     </section>
