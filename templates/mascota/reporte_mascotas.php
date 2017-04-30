@@ -93,6 +93,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
+        <h1 class="wrap__title">Mascotas</h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0) {
                 echo "Sin mascotas";

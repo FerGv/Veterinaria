@@ -87,6 +87,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
+        <h1 class="wrap__title">Facturas</h1>
         <?php 
             while($factura = mysqli_fetch_assoc($resultado_factura)) {
         ?>

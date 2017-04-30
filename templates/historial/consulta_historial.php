@@ -14,6 +14,9 @@
 
         $buscar_historial = "SELECT fechaseg_historial, fecha_control, nombre_medico, control_servicio.clave_control_servicio AS clave_control_servicio FROM historial, mascota, control_servicio, medico WHERE historial.id_mascota='$mascota' AND historial.id_mascota=mascota.id_mascota AND historial.clave_control_servicio=control_servicio.clave_control_servicio AND control_servicio.rfc_medico=medico.rfc_medico";
         $resultado = mysqli_query($conexion, $buscar_historial);
+
+        $buscar_mascota = mysqli_query($conexion, "SELECT nombre_mascota AS nombre FROM mascota WHERE id_mascota='$mascota'");
+        $nombre_mascota = mysqli_fetch_assoc($buscar_mascota);
     }
 ?>
 
@@ -94,6 +97,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
+        <h1 class="wrap__title"><?php echo $nombre_mascota['nombre'] ?></h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0) {
                 echo "Sin historial";

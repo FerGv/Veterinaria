@@ -87,6 +87,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
+        <h1 class="wrap__title">Médicos</h1>
         <?php 
             while($medico = mysqli_fetch_assoc($resultado)) {
         ?>

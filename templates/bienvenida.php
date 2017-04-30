@@ -81,8 +81,8 @@
                         <a href="mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="header--menu__link">Consultar mascotas</a>
                     </li>
                     <li class="categoria">
-                        <a href="#" class="header--menu__link">Agendar cita</a>
-                        <a href="#" class="header--menu__link">Consultar citas</a>
+                        <a href="cita/form_alta_cita.php" class="header--menu__link">Agendar cita</a>
+                        <a href="cita/reporte_citas.php" class="header--menu__link">Consultar citas</a>
                     </li>
                 </ul>
                 <?php } ?>
