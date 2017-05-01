@@ -13,8 +13,11 @@
         $buscar_servicios = "SELECT * FROM servicio";
         $resultado_servicio = mysqli_query($conexion, $buscar_servicios);
 
-        $buscar_datos = mysqli_query($conexion, "SELECT mascota.rfc_cliente AS rfc_cliente, mascota.nombre_mascota AS nombre_mascota FROM control_servicio JOIN mascota WHERE control_servicio.id_mascota = mascota.id_mascota");
-        $datos = mysqli_fetch_assoc($buscar_datos);
+        $buscar_mascota = mysqli_query($conexion, "SELECT * FROM control_servicio, mascota WHERE clave_control_servicio = '$clave_control' AND mascota.id_mascota = control_servicio.id_mascota"); 
+        $mascota = mysqli_fetch_assoc($buscar_mascota);
+
+        $buscar_historial = mysqli_query($conexion, "SELECT fechaseg_historial AS fecha_seg FROM historial,control_servicio WHERE historial.clave_control_servicio = '$clave_control'"); 
+        $historial = mysqli_fetch_assoc($buscar_historial);
     }
 ?>
 
@@ -97,12 +100,12 @@
     <section class="wrap" id="wrap">
         <form action="modificar_control.php?control=<?php echo $clave_control ?>" method="post">
             <h1 class="form__title">Consulta</h1>
-            <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus value="<?php echo $datos['rfc_cliente'] ?>"><br>
-            <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" value="<?php echo $datos['nombre_mascota'] ?>"><br>
+            <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus value="<?php echo $mascota['rfc_cliente'] ?>"><br>
+            <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" value="<?php echo $mascota['nombre_mascota'] ?>"><br>
             <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input" value="<?php echo $control['rfc_medico'] ?>"><br>
             <div class="date">
                 <label for="fecha" class="date__label control__label">Próxima consulta</label>
-                <input type="date" name="fecha_control" id="fecha" required class="date__input control__input" value="<?php echo $control['fecha_control'] ?>">
+                <input type="date" name="fecha_seguimiento" id="fecha" required class="date__input control__input" value="<?php echo $historial['fecha_seg'] ?>">
             </div><br>
             <div class="service">
             <?php 

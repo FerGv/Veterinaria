@@ -2,7 +2,7 @@
     if (!$_POST) {
         header("Location:form_modificar_control.php");
     }
-    elseif ((!$_POST['rfc_cliente']) || (!$_POST['nombre_mascota']) || (!$_POST['rfc_medico']) || (!$_POST['fecha_control']) || (!$_POST['servicios'])) {
+    elseif ((!$_POST['rfc_cliente']) || (!$_POST['nombre_mascota']) || (!$_POST['rfc_medico']) || (!$_POST['fecha_seguimiento']) || (!$_POST['servicios'])) {
         header("Location:form_modificar_control.php");
     }
     else {
@@ -12,7 +12,7 @@
         $rfc_cliente = $_POST['rfc_cliente'];
         $nombre_mascota = $_POST['nombre_mascota'];
         $rfc_medico = $_POST['rfc_medico'];
-        $fecha_control = $_POST['fecha_control'];
+        $fecha_seguimiento = $_POST['fecha_seguimiento'];
         $servicios = $_POST['servicios'];
 
         $buscar_mascota = mysqli_query($conexion, "SELECT id_mascota FROM mascota WHERE nombre_mascota='$nombre_mascota' AND rfc_cliente='$rfc_cliente'");
@@ -26,7 +26,7 @@
             exit;
         }
 
-        $modificar_control = "UPDATE control_servicio SET fecha_control='$fecha_control', id_mascota='$mascota[id_mascota]', rfc_medico='$rfc_medico' WHERE clave_control_servicio='$clave_control'";
+        $modificar_control = "UPDATE control_servicio SET id_mascota='$mascota[id_mascota]', rfc_medico='$rfc_medico' WHERE clave_control_servicio='$clave_control'";
         $resultado = mysqli_query($conexion, $modificar_control);
 
 
@@ -39,6 +39,8 @@
                 $crear_servicio = mysqli_query($conexion, "INSERT INTO control_servicio_servicio VALUES ('$clave_control', '$clave_servicio')");
             // }
         }
+
+        $modificar_historial = mysqli_query($conexion, "UPDATE historial SET id_mascota='$mascota[id_mascota]', fechaseg_historial='$fecha_seguimiento' WHERE clave_control_servicio='$clave_control'");
 
         echo "<script>alert('Consulta modificada con éxito.');</script>";
         header("Location:reporte_control.php");

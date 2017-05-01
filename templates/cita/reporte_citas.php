@@ -97,7 +97,7 @@
             $hoy_dia = $hoy[8].$hoy[9];
             $hoy_mes = $hoy[5].$hoy[6];
             $hoy_anio = $hoy[0].$hoy[1].$hoy[2].$hoy[3];
-            if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes) {
+            if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes && $hoy_dia <= $cita_dia) {
         ?>
             <div class="card">
                 <div class="card--title">

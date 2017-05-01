@@ -104,7 +104,7 @@
                 </div>
 
                 <?php 
-                    $buscar_mascota = mysqli_query($conexion, "SELECT mascota.nombre_mascota AS nombre_mascota FROM control_servicio JOIN mascota WHERE control_servicio.id_mascota = mascota.id_mascota"); 
+                    $buscar_mascota = mysqli_query($conexion, "SELECT nombre_mascota FROM control_servicio, mascota WHERE clave_control_servicio = '$control[clave_control_servicio]' AND mascota.id_mascota = control_servicio.id_mascota"); 
                     $mascota = mysqli_fetch_assoc($buscar_mascota);
                 ?>
                 <p class="card__data"><?php echo $mascota['nombre_mascota'] ?></p>
@@ -122,6 +122,12 @@
                 ?>
                     <p class="card__data"><?php echo $servicio['descripcion_servicio'] ?></p>
                 <?php } ?>
+                
+                <?php 
+                    $buscar_historial = mysqli_query($conexion, "SELECT fechaseg_historial AS fecha_seg FROM historial,control_servicio WHERE historial.clave_control_servicio = '$control[clave_control_servicio]'"); 
+                    $historial = mysqli_fetch_assoc($buscar_historial);
+                ?>
+                <p class="card__data"><?php echo $historial['fecha_seg'] ?></p>
             </div>
         <?php
             }
