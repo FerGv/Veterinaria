@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Bienvenida</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fonts/styles.css">
     <?php 
         session_start();
         if (!$_SESSION) {
@@ -89,10 +90,10 @@
             </div>
         </div>
         <div class="header--title">
-            <a href="bienvenida.php" class="header--title__name">Veterinaria</a>
+            <a href="bienvenida.php" class="header--title__name blanco">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">

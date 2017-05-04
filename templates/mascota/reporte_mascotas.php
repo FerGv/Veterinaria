@@ -22,6 +22,7 @@
     <meta charset="UTF-8">
     <title>Reporte mascotas</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -108,8 +109,8 @@
                     </a>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="form_modificar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item">Modificar</a>
-                            <a href="eliminar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item">Eliminar</a>
+                            <a href="form_modificar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item"><i class="icon-edit"></i></a>
+                            <a href="eliminar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

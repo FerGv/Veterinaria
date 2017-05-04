@@ -103,3 +103,8 @@ function Mostrar_Facturas() {
         funciones_facturas.parentElement.children[0].className = funciones_facturas.parentElement.children[0].className.replace(" active", "");
     }
 }
+
+function Confirmar_Eliminar() {
+    let confirmacion = confirm("¿Seguro que desea eliminar?");
+    return (confirmacion) ? true : false;
+}

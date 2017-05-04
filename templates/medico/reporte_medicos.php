@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reporte medicos</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -96,8 +97,8 @@
                     <h1 class="card--title__name"><?php echo $medico['rfc_medico'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="form_modificar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item">Modificar</a>
-                            <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item">Eliminar</a>
+                            <a href="form_modificar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
+                            <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

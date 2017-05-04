@@ -40,6 +40,9 @@
         $crear_historial = "INSERT INTO historial VALUES ('$mascota[id_mascota]', '$fecha_seguimiento', '$control[clave_control_servicio]')";
         $resultado_historial = mysqli_query($conexion, $crear_historial);
 
+        $crear_cita = "INSERT INTO cita(fecha_cita, id_mascota) VALUES ('$fecha_seguimiento', '$mascota[id_mascota]')";
+        $resultado_cita = mysqli_query($conexion, $crear_cita);
+
         echo "<script>alert('Consulta registrada con éxito.');</script>";
         header("Location:reporte_control.php");
 

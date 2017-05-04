@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reporte clientes</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -96,8 +97,8 @@
                     <a href="../mascota/reporte_mascotas.php?cliente=<?php echo $cliente['rfc_cliente'] ?>"><h1 class="card--title__name"><?php echo $cliente['rfc_cliente'] ?></h1></a>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="form_modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Modificar</a>
-                            <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item">Eliminar</a>
+                            <a href="form_modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
+                            <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

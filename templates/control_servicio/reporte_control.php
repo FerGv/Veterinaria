@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reporte Consultas</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -90,15 +91,17 @@
         <h1 class="wrap__title">Consultas</h1>
         <?php 
             while($control = mysqli_fetch_assoc($resultado_control)) {
+                $buscar_cita = mysqli_query($conexion, "SELECT clave_cita FROM cita,control_servicio,historial WHERE control_servicio.clave_control_servicio='$control[clave_control_servicio]' AND historial.clave_control_servicio = '$control[clave_control_servicio]' AND cita.id_mascota = control_servicio.id_mascota AND cita.fecha_cita = historial.fechaseg_historial");
+                $cita = mysqli_fetch_assoc($buscar_cita);
         ?>
             <div class="card">
                 <div class="card--title">
                     <h1 class="card--title__name"><?php echo $control['fecha_control'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Modificar</a>
-                            <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Eliminar</a>
-                            <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item">Facturar</a>
+                            <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
+                            <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
+                            <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item"><i class="icon-file"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

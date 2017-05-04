@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reporte clientes</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -96,7 +97,7 @@
                     <h1 class="card--title__name"><?php echo $factura['clave_factura'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="eliminar_factura.php?factura=<?php echo $factura['clave_factura'] ?>" class="card--title__item">Eliminar</a>
+                            <a href="eliminar_factura.php?factura=<?php echo $factura['clave_factura'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>
