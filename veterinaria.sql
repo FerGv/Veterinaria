@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2017 a las 00:22:00
+-- Tiempo de generación: 04-05-2017 a las 06:40:38
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `veterinaria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cita`
+--
+
+CREATE TABLE `cita` (
+  `clave_cita` int(11) NOT NULL,
+  `fecha_cita` date NOT NULL,
+  `id_mascota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`clave_cita`, `fecha_cita`, `id_mascota`) VALUES
+(3, '2017-05-16', 21),
+(4, '2017-05-31', 20);
 
 -- --------------------------------------------------------
 
@@ -57,6 +77,28 @@ CREATE TABLE `control_servicio` (
   `rfc_medico` varchar(15) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `control_servicio`
+--
+
+INSERT INTO `control_servicio` (`clave_control_servicio`, `fecha_control`, `id_mascota`, `rfc_medico`) VALUES
+(1, '2017-04-16', 16, 'medico123'),
+(2, '2017-04-23', 16, 'medico123'),
+(3, '2017-04-30', 16, 'medico123'),
+(4, '2017-04-30', 16, 'medico123'),
+(5, '2017-04-30', 16, 'medico123'),
+(6, '2017-04-30', 16, 'medico123'),
+(7, '2017-04-30', 16, 'medico123'),
+(8, '2017-04-30', 16, 'medico123'),
+(10, '2017-04-30', 16, 'medico123'),
+(11, '2017-04-30', 22, 'medico123'),
+(12, '2017-04-30', 21, 'medico123'),
+(13, '2017-04-30', 23, 'medico123'),
+(14, '2017-05-01', 23, 'medico123'),
+(15, '2017-05-01', 22, 'medico123'),
+(16, '2017-05-01', 21, 'medico123'),
+(17, '2017-05-01', 20, 'medico123');
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +109,28 @@ CREATE TABLE `control_servicio_servicio` (
   `clave_control_servicio` int(11) NOT NULL,
   `clave_servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `control_servicio_servicio`
+--
+
+INSERT INTO `control_servicio_servicio` (`clave_control_servicio`, `clave_servicio`) VALUES
+(1, 6),
+(1, 7),
+(2, 6),
+(3, 6),
+(3, 7),
+(3, 6),
+(11, 6),
+(12, 6),
+(12, 7),
+(13, 6),
+(10, 7),
+(14, 6),
+(15, 6),
+(16, 6),
+(16, 7),
+(17, 6);
 
 -- --------------------------------------------------------
 
@@ -81,6 +145,13 @@ CREATE TABLE `factura` (
   `clave_control_servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`clave_factura`, `fecha_factura`, `hora_factura`, `clave_control_servicio`) VALUES
+(1, '2017-04-23', '08:59:16', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +163,23 @@ CREATE TABLE `historial` (
   `fechaseg_historial` date NOT NULL,
   `clave_control_servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `historial`
+--
+
+INSERT INTO `historial` (`id_mascota`, `fechaseg_historial`, `clave_control_servicio`) VALUES
+(16, '2017-04-30', 2),
+(16, '2017-05-04', 3),
+(16, '2017-05-05', 3),
+(16, '2017-05-10', 10),
+(22, '2017-04-30', 11),
+(21, '2017-04-30', 12),
+(23, '2017-04-30', 13),
+(23, '2017-05-15', 14),
+(22, '2017-05-18', 15),
+(21, '2017-05-19', 16),
+(20, '2017-05-30', 17);
 
 -- --------------------------------------------------------
 
@@ -119,7 +207,11 @@ INSERT INTO `mascota` (`id_mascota`, `nombre_mascota`, `especie_mascota`, `raza_
 (15, 'abc1', 'abc1', 'abc1', 'abc1', 'abc1', 'abc1', '2017-04-25', '1234'),
 (16, 'ferchito', 'perro', 'perro', 'cafe', 'grande', 'tatuaje', '2017-01-08', 'fer123'),
 (17, 'admin', 'a', 'a', 'a', 'a', 'a', '2017-04-19', 'fer456'),
-(18, 'asds', 'das', 'dsafa', 'asd', 'sadfds', 'sadfs', '2017-04-24', 'dsafsd');
+(18, 'asds', 'das', 'dsafa', 'asd', 'sadfds', 'sadfs', '2017-04-24', 'dsafsd'),
+(20, 'ferchito2', 'asd', 'asd', 'asd', 'asd', 'asd', '2017-04-10', 'fer123'),
+(21, 'ferchito3', 'asd', 'asda', 'adqs', 'ssdfasd', 'asda', '2017-04-04', 'fer123'),
+(22, 'ferchito4', 'asd', 'asda', 'adqs', 'ssdfasd', 'asda', '2017-04-04', 'fer123'),
+(23, 'ferchito5', 'ada', 'qqwdsa', 'ds', 'ads', 'ads', '2017-04-18', 'fer123');
 
 -- --------------------------------------------------------
 
@@ -134,6 +226,13 @@ CREATE TABLE `medico` (
   `telefono_medico` int(11) NOT NULL,
   `email_medico` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `medico`
+--
+
+INSERT INTO `medico` (`rfc_medico`, `nombre_medico`, `direccion_medico`, `telefono_medico`, `email_medico`) VALUES
+('medico123', 'doctor', 'direccion', 12345678, 'medico@email.com');
 
 -- --------------------------------------------------------
 
@@ -184,6 +283,12 @@ INSERT INTO `usuario` (`nombre_usuario`, `pass_usuario`, `tipo_usuario`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `cita`
+--
+ALTER TABLE `cita`
+  ADD PRIMARY KEY (`clave_cita`);
 
 --
 -- Indices de la tabla `cliente`
@@ -250,20 +355,25 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `cita`
+--
+ALTER TABLE `cita`
+  MODIFY `clave_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `control_servicio`
 --
 ALTER TABLE `control_servicio`
-  MODIFY `clave_control_servicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `clave_control_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `clave_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `clave_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
