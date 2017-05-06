@@ -101,7 +101,7 @@
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
+                            <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

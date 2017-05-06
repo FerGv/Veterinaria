@@ -108,3 +108,8 @@ function Confirmar_Eliminar() {
     let confirmacion = confirm("¿Seguro que desea eliminar?");
     return (confirmacion) ? true : false;
 }
+
+function Confirmar_Factura() {
+    let confirmacion = confirm("¿Seguro que desea facturar?");
+    return (confirmacion) ? true : false;
+}

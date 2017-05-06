@@ -103,8 +103,8 @@
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
-                            <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" class="card--title__item"><i class="icon-file"></i></a>
+                            <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item" onclick="return Confirmar_Eliminar()"><i class="icon-delete"></i></a>
+                            <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" onclick="return Confirmar_Factura()" class="card--title__item"><i class="icon-file"></i></a>
                         </nav>
                     <?php } ?>
                 </div>

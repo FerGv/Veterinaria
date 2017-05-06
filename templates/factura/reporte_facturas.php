@@ -100,7 +100,7 @@
                     <h1 class="card--title__name"><?php echo $factura['clave_factura'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
-                            <a href="eliminar_factura.php?factura=<?php echo $factura['clave_factura'] ?>" class="card--title__item"><i class="icon-delete"></i></a>
+                            <a href="eliminar_factura.php?factura=<?php echo $factura['clave_factura'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>
