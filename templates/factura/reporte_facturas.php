@@ -90,6 +90,9 @@
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Facturas</h1>
         <?php 
+            if (mysqli_num_rows($resultado_factura) == 0) {
+                echo "Sin facturas";
+            } else {
             while($factura = mysqli_fetch_assoc($resultado_factura)) {
         ?>
             <div class="card">
@@ -106,7 +109,7 @@
                 <p class="card__data"><?php echo $factura['clave_control_servicio'] ?></p>
             </div>
         <?php
-            }
+            } }
             mysqli_close($conexion);
         ?>
     </section>

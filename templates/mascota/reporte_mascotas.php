@@ -98,9 +98,8 @@
         <?php 
             if (mysqli_num_rows($resultado) == 0) {
                 echo "Sin mascotas";
-                exit;
-            }
-            while($mascota = mysqli_fetch_assoc($resultado)) {
+            } else {
+                while($mascota = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
                 <div class="card--title">
@@ -122,7 +121,7 @@
                 <p class="card__data"><?php echo $mascota['fechanac_mascota'] ?></p>
             </div>
         <?php
-            }
+            } }
             mysqli_close($conexion);
         ?>
     </section>

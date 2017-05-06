@@ -101,9 +101,8 @@
         <?php 
             if (mysqli_num_rows($resultado) == 0) {
                 echo "Sin historial";
-                exit;
-            }
-            while($historial = mysqli_fetch_assoc($resultado)) {
+            } else {
+                while($historial = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
                 <div class="card--title">
@@ -120,7 +119,7 @@
                 <p class="card__data"><?php echo $historial['fechaseg_historial'] ?></p>
             </div>
         <?php
-            }
+             } }
             mysqli_close($conexion);
         ?>
     </section>

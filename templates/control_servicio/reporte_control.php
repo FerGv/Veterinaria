@@ -90,9 +90,12 @@
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Consultas</h1>
         <?php 
-            while($control = mysqli_fetch_assoc($resultado_control)) {
-                $buscar_cita = mysqli_query($conexion, "SELECT clave_cita FROM cita,control_servicio,historial WHERE control_servicio.clave_control_servicio='$control[clave_control_servicio]' AND historial.clave_control_servicio = '$control[clave_control_servicio]' AND cita.id_mascota = control_servicio.id_mascota AND cita.fecha_cita = historial.fechaseg_historial");
-                $cita = mysqli_fetch_assoc($buscar_cita);
+            if (mysqli_num_rows($resultado_control) == 0) {
+                echo "Sin consultas";
+            } else {
+                while($control = mysqli_fetch_assoc($resultado_control)) {
+                    $buscar_cita = mysqli_query($conexion, "SELECT clave_cita FROM cita,control_servicio,historial WHERE control_servicio.clave_control_servicio='$control[clave_control_servicio]' AND historial.clave_control_servicio = '$control[clave_control_servicio]' AND cita.id_mascota = control_servicio.id_mascota AND cita.fecha_cita = historial.fechaseg_historial");
+                    $cita = mysqli_fetch_assoc($buscar_cita);
         ?>
             <div class="card">
                 <div class="card--title">
@@ -133,7 +136,7 @@
                 <p class="card__data"><?php echo $historial['fecha_seg'] ?></p>
             </div>
         <?php
-            }
+            } }
             mysqli_close($conexion);
         ?>
     </section>

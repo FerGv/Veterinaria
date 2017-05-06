@@ -90,7 +90,10 @@
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Clientes</h1>
         <?php 
-            while($cliente = mysqli_fetch_assoc($resultado)) {
+            if (mysqli_num_rows($resultado) == 0) {
+                echo "Sin clientes";
+            } else {
+                while($cliente = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
                 <div class="card--title">
@@ -108,7 +111,7 @@
                 <p class="card__data"><?php echo $cliente['email_cliente'] ?></p>
             </div>
         <?php
-            }
+            } }
             mysqli_close($conexion);
         ?>
     </section>

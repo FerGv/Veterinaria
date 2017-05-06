@@ -5,7 +5,8 @@
     }
     else {
         include("../conexion.php");
-        $buscar_citas = "SELECT nombre_mascota,fechaseg_historial FROM mascota, historial WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND historial.id_mascota=mascota.id_mascota ORDER BY fechaseg_historial ASC";
+        // $buscar_citas = "SELECT nombre_mascota,fechaseg_historial FROM mascota, historial WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND historial.id_mascota=mascota.id_mascota ORDER BY fechaseg_historial ASC";
+        $buscar_citas = "SELECT nombre_mascota,fecha_cita FROM cita,mascota WHERE rfc_cliente='$_SESSION[nombre]' AND cita.id_mascota=mascota.id_mascota ORDER BY fecha_cita ASC";
         $resultado = mysqli_query($conexion, $buscar_citas);
     }
 ?>
@@ -89,7 +90,7 @@
         <h1 class="wrap__title">Citas</h1>
         <?php 
             while($cita = mysqli_fetch_assoc($resultado)) {
-            $cita_fecha = $cita['fechaseg_historial'];
+            $cita_fecha = $cita['fecha_cita'];
             $cita_dia = $cita_fecha[8].$cita_fecha[9];
             $cita_mes = $cita_fecha[5].$cita_fecha[6];
             $cita_anio = $cita_fecha[0].$cita_fecha[1].$cita_fecha[2].$cita_fecha[3];
@@ -103,7 +104,7 @@
                 <div class="card--title">
                     <h1 class="card--title__name"><?php echo $cita['nombre_mascota'] ?></h1>
                 </div>
-                <p class="card__data">Fecha: <?php echo $cita['fechaseg_historial'] ?></p>
+                <p class="card__data">Fecha: <?php echo $cita['fecha_cita'] ?></p>
             </div>
         <?php
             } }

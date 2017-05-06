@@ -6,6 +6,7 @@
     else {
         include("../conexion.php");
         $clave_control = $_GET['control'];
+        $cita = $_GET['cita'];
         $buscar_control = "SELECT * FROM control_servicio WHERE clave_control_servicio='$clave_control'";
         $resultado_control = mysqli_query($conexion, $buscar_control);
         $control = mysqli_fetch_assoc($resultado_control);
@@ -98,7 +99,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
-        <form action="modificar_control.php?control=<?php echo $clave_control ?>" method="post">
+        <form action="modificar_control.php?control=<?php echo $clave_control ?>&cita=<?php echo $cita ?>" method="post">
             <h1 class="form__title">Consulta</h1>
             <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus value="<?php echo $mascota['rfc_cliente'] ?>"><br>
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" value="<?php echo $mascota['nombre_mascota'] ?>"><br>

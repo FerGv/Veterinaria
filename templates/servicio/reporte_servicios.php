@@ -90,6 +90,9 @@
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Servicios</h1>
         <?php 
+            if (mysqli_num_rows($resultado) == 0) {
+                echo "Sin servicios";
+            } else {
             while($servicio = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
