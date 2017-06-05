@@ -100,5 +100,20 @@
     </footer>
     
     <script src="../../js/funciones.js"></script>
+    <script>
+        // var fecha = document.getElementById('fecha');
+        // fecha.addEventListener('change', ValidarAnterior);
+        
+        // function ValidarAnterior(){
+        //     var fecha_hoy = new Date();
+        //     var fecha_array = fecha.value.split('-');
+        //     var fecha_formateada = new Date(fecha_array[0], fecha_array[1] - 1, fecha_array[2]);
+        //     if (fecha_formateada < fecha_hoy) {
+        //         alert("No puedes seleccionar una fecha anterior al día de hoy");
+        //         fecha.onfocus();
+        //         return false;
+        //     }
+        // }
+    </script>
 </body>
 </html>

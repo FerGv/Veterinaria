@@ -90,16 +90,19 @@
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Citas</h1>
         <?php 
-            while($cita = mysqli_fetch_assoc($resultado)) {
-            $cita_fecha = $cita['fecha_cita'];
-            $cita_dia = $cita_fecha[8].$cita_fecha[9];
-            $cita_mes = $cita_fecha[5].$cita_fecha[6];
-            $cita_anio = $cita_fecha[0].$cita_fecha[1].$cita_fecha[2].$cita_fecha[3];
-            $hoy = date('Y-m-d');
-            $hoy_dia = $hoy[8].$hoy[9];
-            $hoy_mes = $hoy[5].$hoy[6];
-            $hoy_anio = $hoy[0].$hoy[1].$hoy[2].$hoy[3];
-            if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes && $hoy_dia <= $cita_dia) {
+            if (mysqli_num_rows($resultado) == 0):
+                echo "<h1>Sin citas</h1>";
+            else:
+                while($cita = mysqli_fetch_assoc($resultado)):
+                    $cita_fecha = $cita['fecha_cita'];
+                    $cita_dia = $cita_fecha[8].$cita_fecha[9];
+                    $cita_mes = $cita_fecha[5].$cita_fecha[6];
+                    $cita_anio = $cita_fecha[0].$cita_fecha[1].$cita_fecha[2].$cita_fecha[3];
+                    $hoy = date('Y-m-d');
+                    $hoy_dia = $hoy[8].$hoy[9];
+                    $hoy_mes = $hoy[5].$hoy[6];
+                    $hoy_anio = $hoy[0].$hoy[1].$hoy[2].$hoy[3];
+                    if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes && $hoy_dia <= $cita_dia):
         ?>
             <div class="card">
                 <div class="card--title">
@@ -108,7 +111,9 @@
                 <p class="card__data">Fecha: <?php echo $cita['fecha_cita'] ?></p>
             </div>
         <?php
-            } }
+                    endif;
+                endwhile;
+            endif;
             mysqli_close($conexion);
         ?>
     </section>

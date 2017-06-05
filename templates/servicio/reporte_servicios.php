@@ -5,7 +5,7 @@
     }
     else {
         include("../conexion.php");
-        $buscar_servicios = "SELECT * FROM servicio";
+        $buscar_servicios = "SELECT * FROM servicio WHERE estado_servicio = 1";
         $resultado = mysqli_query($conexion, $buscar_servicios);
     }
 ?>

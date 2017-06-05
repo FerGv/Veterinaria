@@ -74,6 +74,7 @@ CREATE TABLE medico (
   direccion_medico varchar(50) NOT NULL,
   telefono_medico int(11) NOT NULL,
   email_medico varchar(30) NOT NULL,
+  estado_medico int NOT NULL,
   PRIMARY KEY (rfc_medico)
 ) ENGINE=InnoDB;
 
@@ -83,6 +84,7 @@ CREATE TABLE servicio (
   precio_servicio float NOT NULL,
   tipo_servicio varchar(15) NOT NULL,
   periodicidad_servicio date DEFAULT NULL,
+  estado_servicio int NOT NULL,
   PRIMARY KEY (clave_servicio)
 ) ENGINE=InnoDB;
 

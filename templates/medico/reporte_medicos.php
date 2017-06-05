@@ -5,7 +5,7 @@
     }
     else {
         include("../conexion.php");
-        $buscar_medicos = "SELECT * FROM medico";
+        $buscar_medicos = "SELECT * FROM medico WHERE estado_medico = 1";
         $resultado = mysqli_query($conexion, $buscar_medicos);
     }
 ?>
