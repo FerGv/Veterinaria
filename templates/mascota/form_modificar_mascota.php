@@ -18,6 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -90,7 +91,7 @@
            <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <form action="modificar_mascota.php?mascota=<?php echo $id_mascota ?>&cliente=<?php echo $cliente ?>" method="post">
             <h1 class="form__title">Mascota</h1>
             <input type="text" name="nombre" placeholder="Nombre" required class="form__input" value="<?php echo $mascota['nombre_mascota'] ?>"><br>

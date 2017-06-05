@@ -15,6 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte citas</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -84,10 +85,10 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <h1 class="wrap__title">Citas</h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0):

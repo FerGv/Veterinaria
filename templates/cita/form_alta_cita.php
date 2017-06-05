@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -83,7 +84,7 @@
         </div>
     </header>
     <section class="wrap" id="wrap">
-        <form action="alta_cita.php" method="post">
+        <form action="alta_cita.php" method="post" class="animated bounceInRight">
             <h1 class="form__title">Agendar Cita</h1>
             <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" autofocus><br>
             <div class="date">
@@ -101,19 +102,19 @@
     
     <script src="../../js/funciones.js"></script>
     <script>
-        // var fecha = document.getElementById('fecha');
-        // fecha.addEventListener('change', ValidarAnterior);
+        var fecha = document.getElementById('fecha');
+        fecha.addEventListener('change', ValidarAnterior);
         
-        // function ValidarAnterior(){
-        //     var fecha_hoy = new Date();
-        //     var fecha_array = fecha.value.split('-');
-        //     var fecha_formateada = new Date(fecha_array[0], fecha_array[1] - 1, fecha_array[2]);
-        //     if (fecha_formateada < fecha_hoy) {
-        //         alert("No puedes seleccionar una fecha anterior al día de hoy");
-        //         fecha.onfocus();
-        //         return false;
-        //     }
-        // }
+        function ValidarAnterior(){
+            var fecha_hoy = new Date();
+            var fecha_array = fecha.value.split('-');
+            var fecha_formateada = new Date(fecha_array[0], fecha_array[1] - 1, fecha_array[2]);
+            if (fecha_formateada < fecha_hoy) {
+                alert("No puedes seleccionar una fecha anterior al día de hoy");
+                fecha.onfocus();
+                return false;
+            }
+        }
     </script>
 </body>
 </html>

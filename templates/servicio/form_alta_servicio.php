@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -82,7 +83,7 @@
            <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <form action="alta_servicio.php" method="post">
             <h1 class="form__title">Servicio</h1>
             <input type="text" name="descripcion" placeholder="Descripción" required class="form__input" autofocus><br>

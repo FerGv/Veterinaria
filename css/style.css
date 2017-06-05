@@ -381,7 +381,7 @@ input[type="checkbox"]:checked + label:before {
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: rgba(0, 0, 0, .6);
+  background: #34495e;
 }
 .logo {
     background: transparent;
@@ -398,7 +398,7 @@ input[type="checkbox"]:checked + label:before {
 }
 .logo__imagen h1 {
     font-size: 7em;
-    color: rgba(0, 0, 255, .7);
+    color: rgba(255, 255, 255, .7);
     margin-top: 20px;
 }
 .logo__imagen p {
@@ -434,9 +434,9 @@ input[type="checkbox"]:checked + label:before {
 }
 .descripcion {
     width: 0;
-    height: 50%;
-    background: rgba(255, 255, 255, .7);
-    box-shadow: 0 1px 3px rgba(255, 255, 255, .6);
+    min-height: 25%;
+    background: #ecf0f1;
+    box-shadow: 0 1px 3px #ecf0f1;
     display: inline-block;
     align-self: center;
     border-radius: 30px;
@@ -444,7 +444,7 @@ input[type="checkbox"]:checked + label:before {
     transition: width .5s;
 }
 .integrante:hover .descripcion {
-    border: 1px solid rgba(255, 255, 255, .5);
+    border: 1px solid #ecf0f1;
     font-size: 1.5em;
     width: 70%;
 }

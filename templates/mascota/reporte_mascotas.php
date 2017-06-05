@@ -21,6 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte mascotas</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -93,11 +94,11 @@
            <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <h1 class="wrap__title">Mascotas</h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0):
-                echo "Sin mascotas";
+                echo "<h1>Sin mascotas</h1>";
             else:
                 while($mascota = mysqli_fetch_assoc($resultado)):
         ?>

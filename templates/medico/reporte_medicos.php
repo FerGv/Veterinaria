@@ -15,6 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte medicos</title>
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
@@ -87,11 +88,12 @@
            <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <h1 class="wrap__title">Médicos</h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0):
                 echo "<h1>Sin médicos<h1>";
+                var_dump($resultado);
             else:
             while($medico = mysqli_fetch_assoc($resultado)):
         ?>

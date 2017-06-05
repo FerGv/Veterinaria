@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
@@ -29,7 +30,7 @@
 <body>
     <section class="wrap">
         <form action="login.php" method="post">
-            <h1 class="form__title">Iniciar Sesión</h1>
+            <h1 class="form__title animated bounceInUp">Iniciar Sesión</h1>
             <input type="text" name="nombre" placeholder="Nombre" required class="form__input" autofocus>
             <div class="password">
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required class="form__input password__input">

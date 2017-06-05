@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenida</title>
+    <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/fonts/styles.css">
     <?php 
@@ -96,7 +97,7 @@
            <a href="logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
-    <section class="wrap" id="wrap">
+    <section class="wrap animated bounceInRight" id="wrap">
         <section class="contenido"  id="contenido">
             <h1 class="contenido__title"><?php echo "Bienvenido<br>$nombre"; ?></h1>
             <br>
