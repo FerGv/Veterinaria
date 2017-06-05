@@ -18,6 +18,7 @@
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -85,7 +86,7 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">

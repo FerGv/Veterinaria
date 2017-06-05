@@ -5,7 +5,7 @@
     }
     else {
         include("../conexion.php");
-        $buscar_clientes = "SELECT * FROM cliente";
+        $buscar_clientes = "SELECT * FROM cliente WHERE estado_cliente = 1";
         $resultado = mysqli_query($conexion, $buscar_clientes);
     }
 ?>
@@ -84,7 +84,7 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">

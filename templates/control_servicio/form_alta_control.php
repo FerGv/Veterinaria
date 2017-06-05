@@ -6,7 +6,11 @@
     else {
         include("../conexion.php");
         $buscar_servicios = "SELECT * FROM servicio";
-        $resultado = mysqli_query($conexion, $buscar_servicios);
+        $resultado_servicios = mysqli_query($conexion, $buscar_servicios);
+        $buscar_clientes = "SELECT rfc_cliente FROM cliente WHERE estado_cliente = 1";
+        $resultado_clientes = mysqli_query($conexion, $buscar_clientes);
+        $buscar_medicos = "SELECT rfc_medico FROM medico";
+        $resultado_medicos = mysqli_query($conexion, $buscar_medicos);
     }
 ?>
 
@@ -16,6 +20,7 @@
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>
@@ -83,22 +88,34 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">
         <form action="alta_control.php" method="post">
             <h1 class="form__title">Consulta</h1>
-            <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus><br>
-            <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input"><br>
-            <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input"><br>
+            <select required class="form__input" id="combo_clientes">
+                <option>Seleccione un cliente</option>
+                <?php while($cliente = mysqli_fetch_assoc($resultado_clientes)): ?>
+                    <option value="<?php echo $cliente['rfc_cliente'] ?>"><?php echo $cliente['rfc_cliente'] ?></option>
+                <?php endwhile; ?>
+            </select>
+            <select required class="form__input" id="combo_mascotas">
+                <option>Seleccione una mascota</option>
+            </select>
+            <select required class="form__input">
+                <option>Seleccione un médico</option>
+                <?php while($medico = mysqli_fetch_assoc($resultado_medicos)): ?>
+                    <option value="<?php echo $medico[rfc_medico] ?>"><?php echo $medico['rfc_medico'] ?></option>
+                <?php endwhile; ?>
+            </select>
             <div class="date">
                 <label for="fecha_seguimiento" class="date__label control__label">Próxima consulta</label>
                 <input type="date" name="fecha_seguimiento" id="fecha_seguimiento" required class="date__input control__input">
             </div><br>
             <div class="service">
             <?php 
-                while($servicio = mysqli_fetch_assoc($resultado)) {
+                while($servicio = mysqli_fetch_assoc($resultado_servicios)) {
             ?>
                 <input type="checkbox" name="servicios[]" id="<?php echo "check$servicio[clave_servicio]" ?>" value="<?php echo "$servicio[clave_servicio]" ?>" class="service__checkbox">
                 <label for="<?php echo "check$servicio[clave_servicio]" ?>" class="service__label"><?php echo $servicio['descripcion_servicio'] ?></label>
@@ -115,6 +132,19 @@
         </div>
     </footer>
 
+    <script src="../../js/jquery.min.js"></script>
     <script src="../../js/funciones.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#combo_clientes").change(function () {
+                $("#combo_clientes option:selected").each(function () {
+                    var rfc_cliente = $(this).val();
+                    $.post("obtener_mascotas.php", { rfc_cliente: rfc_cliente }, function(data){
+                        $("#combo_mascotas").html(data);
+                    });            
+                });
+            })
+        });
+    </script>
 </body>
 </html>

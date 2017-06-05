@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reporte citas</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts/styles.css">
 </head>
 <body>
     <header>

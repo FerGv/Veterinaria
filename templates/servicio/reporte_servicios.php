@@ -84,36 +84,37 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Servicios</h1>
         <?php 
-            if (mysqli_num_rows($resultado) == 0) {
-                echo "Sin servicios";
-            } else {
-            while($servicio = mysqli_fetch_assoc($resultado)) {
+            if (mysqli_num_rows($resultado) == 0):
+                echo "<h1>Sin servicios<h1>";
+            else:
+            while($servicio = mysqli_fetch_assoc($resultado)):
         ?>
             <div class="card">
                 <div class="card--title">
                     <h1 class="card--title__name"><?php echo $servicio['clave_servicio'] ?></h1>
-                    <?php if ($_SESSION['tipo'] != 2) { ?>
+                    <?php if ($_SESSION['tipo'] != 2): ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_servicio.php?servicio=<?php echo $servicio['clave_servicio'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
                             <a href="eliminar_servicio.php?servicio=<?php echo $servicio['clave_servicio'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
-                    <?php } ?>
+                    <?php endif; ?>
                 </div>
                 <p class="card__data"><?php echo $servicio['descripcion_servicio'] ?></p>
                 <p class="card__data"><?php echo $servicio['precio_servicio'] ?></p>
                 <p class="card__data"><?php echo $servicio['tipo_servicio'] ?></p>
-                <?php if ($servicio['periodicidad_servicio'] != null) { ?>
+                <?php if ($servicio['periodicidad_servicio'] != null): ?>
                     <p class="card__data"><?php echo $servicio['periodicidad_servicio'] ?></p>
-                <?php } ?>
+                <?php endif; ?>
             </div>
         <?php
-            }
+            endwhile;
+            endif;
             mysqli_close($conexion);
         ?>
     </section>

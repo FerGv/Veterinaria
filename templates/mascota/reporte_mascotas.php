@@ -90,16 +90,16 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Mascotas</h1>
         <?php 
-            if (mysqli_num_rows($resultado) == 0) {
+            if (mysqli_num_rows($resultado) == 0):
                 echo "Sin mascotas";
-            } else {
-                while($mascota = mysqli_fetch_assoc($resultado)) {
+            else:
+                while($mascota = mysqli_fetch_assoc($resultado)):
         ?>
             <div class="card">
                 <div class="card--title">
@@ -121,7 +121,8 @@
                 <p class="card__data"><?php echo $mascota['fechanac_mascota'] ?></p>
             </div>
         <?php
-            } }
+            endwhile;
+            endif;
             mysqli_close($conexion);
         ?>
     </section>

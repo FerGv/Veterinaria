@@ -23,7 +23,7 @@
             exit;
         }
 
-        $crear_cliente = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
+        $crear_cliente = "INSERT INTO cliente VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email', 1)";
         $crear_usuario = "INSERT INTO usuario VALUES ('$rfc', 'veterinaria123', 2)";
         $resultado_cliente = mysqli_query($conexion, $crear_cliente);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);

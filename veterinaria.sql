@@ -24,6 +24,7 @@ CREATE TABLE cliente (
   direccion_cliente varchar(50) NOT NULL,
   telefono_cliente int NOT NULL,
   email_cliente varchar(30) NOT NULL,
+  estado_cliente int NOT NULL,
   PRIMARY KEY (rfc_cliente)
 ) ENGINE=InnoDB;
 
@@ -150,3 +151,8 @@ SHOW COLUMNS FROM mascota; 						-- DESCRIBE mascota;
 SHOW COLUMNS FROM medico;					 	-- DESCRIBE medico;
 SHOW COLUMNS FROM servicio; 					-- DESCRIBE servicio;
 SHOW COLUMNS FROM usuario; 						-- DESCRIBE usuario;
+
+---------------------------------------------------------------------
+-- Borrar base de datos
+---------------------------------------------------------------------
+DROP DATABASE veterinaria;

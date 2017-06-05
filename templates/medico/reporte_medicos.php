@@ -84,16 +84,16 @@
             <a href="../bienvenida.php" class="header--title__name">Veterinaria</a>
         </div>
         <div class="header--nav">
-           <a href="../logout.php" class="header--nav__link">Cerrar Sesión</a>
+           <a href="../logout.php" class="header--nav__link"><i class="icon-logout"></i></a>
         </div>
     </header>
     <section class="wrap" id="wrap">
         <h1 class="wrap__title">Médicos</h1>
         <?php 
-            if (mysqli_num_rows($resultado) == 0) {
-                echo "Sin médicos";
-            } else {
-            while($medico = mysqli_fetch_assoc($resultado)) {
+            if (mysqli_num_rows($resultado) == 0):
+                echo "<h1>Sin médicos<h1>";
+            else:
+            while($medico = mysqli_fetch_assoc($resultado)):
         ?>
             <div class="card">
                 <div class="card--title">
@@ -111,7 +111,8 @@
                 <p class="card__data"><?php echo $medico['email_medico'] ?></p>
             </div>
         <?php
-            }
+            endwhile;
+            endif;
             mysqli_close($conexion);
         ?>
     </section>
