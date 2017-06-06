@@ -9,7 +9,7 @@
         $resultado_servicios = mysqli_query($conexion, $buscar_servicios);
         $buscar_clientes = "SELECT rfc_cliente FROM cliente WHERE estado_cliente = 1";
         $resultado_clientes = mysqli_query($conexion, $buscar_clientes);
-        $buscar_medicos = "SELECT rfc_medico FROM medico";
+        $buscar_medicos = "SELECT rfc_medico FROM medico WHERE estado_medico = 1";
         $resultado_medicos = mysqli_query($conexion, $buscar_medicos);
     }
 ?>
@@ -95,24 +95,24 @@
     <section class="wrap animated bounceInRight" id="wrap">
         <form action="alta_control.php" method="post">
             <h1 class="form__title">Consulta</h1>
-            <select required class="form__input" id="combo_clientes">
+            <select required class="form__input" id="combo_clientes" name="rfc_cliente">
                 <option>Seleccione un cliente</option>
                 <?php while($cliente = mysqli_fetch_assoc($resultado_clientes)): ?>
                     <option value="<?php echo $cliente['rfc_cliente'] ?>"><?php echo $cliente['rfc_cliente'] ?></option>
                 <?php endwhile; ?>
             </select>
-            <select required class="form__input" id="combo_mascotas">
+            <select required class="form__input" id="combo_mascotas" name="id_mascota">
                 <option>Seleccione una mascota</option>
             </select>
-            <select required class="form__input">
+            <select required class="form__input" name="rfc_medico">
                 <option>Seleccione un médico</option>
                 <?php while($medico = mysqli_fetch_assoc($resultado_medicos)): ?>
-                    <option value="<?php echo $medico[rfc_medico] ?>"><?php echo $medico['rfc_medico'] ?></option>
+                    <option value="<?php echo $medico['rfc_medico'] ?>"><?php echo $medico['rfc_medico'] ?></option>
                 <?php endwhile; ?>
             </select>
             <div class="date">
                 <label for="fecha_seguimiento" class="date__label control__label">Próxima consulta</label>
-                <input type="date" name="fecha_seguimiento" id="fecha_seguimiento" required class="date__input control__input">
+                <input type="date" name="fecha_seguimiento" id="fecha_seguimiento" class="date__input control__input">
             </div><br>
             <div class="service">
             <?php 

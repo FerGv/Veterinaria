@@ -19,6 +19,11 @@
 
         $buscar_historial = mysqli_query($conexion, "SELECT fechaseg_historial AS fecha_seg FROM historial,control_servicio WHERE historial.clave_control_servicio = '$clave_control'"); 
         $historial = mysqli_fetch_assoc($buscar_historial);
+
+        $buscar_clientes = "SELECT rfc_cliente FROM cliente WHERE estado_cliente = 1";
+        $resultado_clientes = mysqli_query($conexion, $buscar_clientes);
+        $buscar_medicos = "SELECT rfc_medico FROM medico WHERE estado_medico = 1";
+        $resultado_medicos = mysqli_query($conexion, $buscar_medicos);
     }
 ?>
 
@@ -103,12 +108,34 @@
     <section class="wrap animated bounceInRight" id="wrap">
         <form action="modificar_control.php?control=<?php echo $clave_control ?>&cita=<?php echo $cita ?>" method="post">
             <h1 class="form__title">Consulta</h1>
-            <input type="text" name="rfc_cliente" placeholder="RFC cliente" required class="form__input" autofocus value="<?php echo $mascota['rfc_cliente'] ?>"><br>
-            <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" value="<?php echo $mascota['nombre_mascota'] ?>"><br>
-            <input type="text" name="rfc_medico" placeholder="RFC médico" required class="form__input" value="<?php echo $control['rfc_medico'] ?>"><br>
+
+            <select required class="form__input" id="combo_clientes" name="rfc_cliente">
+                <?php 
+                    echo "<option>Seleccione un cliente</option>";
+                    echo "<option value="$mascota[rfc_cliente]" selected>$mascota[rfc_cliente]</option>";
+                    while($cliente = mysqli_fetch_assoc($resultado_clientes)): 
+                ?>
+                        <option value="<?php echo $cliente['rfc_cliente'] ?>"><?php echo $cliente['rfc_cliente'] ?></option>
+                <?php endwhile; ?>
+            </select>
+            <select required class="form__input" id="combo_mascotas" name="nombre_mascota">
+                <?php 
+                    echo "<option>Seleccione una mascota</option>";
+                    echo "<option value="$mascota[id_mascota]" selected>$mascota[nombre_mascota]</option>";
+                ?>
+            </select>
+            <select required class="form__input" name="rfc_medico">
+                <?php 
+                    echo "<option>Seleccione un medico</option>";
+                    echo "<option value="$control[rfc_medico]" selected>$control[rfc_medico]</option>";
+                    while($medico = mysqli_fetch_assoc($resultado_medicos)): 
+                ?>
+                        <option value="<?php echo $medico['rfc_medico'] ?>"><?php echo $medico['rfc_medico'] ?></option>
+                <?php endwhile; ?>
+            </select>
             <div class="date">
                 <label for="fecha" class="date__label control__label">Próxima consulta</label>
-                <input type="date" name="fecha_seguimiento" id="fecha" required class="date__input control__input" value="<?php echo $historial['fecha_seg'] ?>">
+                <input type="date" name="fecha_seguimiento" id="fecha" class="date__input control__input" value="<?php echo $historial['fecha_seg'] ?>">
             </div><br>
             <div class="service">
             <?php 
@@ -130,6 +157,33 @@
         </div>
     </footer>
 
+    <script src="../../js/jquery.min.js"></script>
     <script src="../../js/funciones.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#combo_clientes").change(function () {
+                $("#combo_clientes option:selected").each(function () {
+                    var rfc_cliente = $(this).val();
+                    $.post("obtener_mascotas.php", { rfc_cliente: rfc_cliente }, function(data){
+                        $("#combo_mascotas").html(data);
+                    });            
+                });
+            })
+        });
+
+        var fecha = document.getElementById('fecha_seguimiento');
+        fecha.addEventListener('change', ValidarAnterior);
+
+        function ValidarAnterior(){
+            var fecha_hoy = new Date();
+            var fecha_array = fecha.value.split('-');
+            var fecha_formateada = new Date(fecha_array[0], fecha_array[1] - 1, fecha_array[2]);
+            if (fecha_formateada < fecha_hoy) {
+                alert("No puedes seleccionar una fecha anterior al día de hoy");
+                fecha.onfocus();
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

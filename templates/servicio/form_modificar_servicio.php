@@ -94,7 +94,7 @@
         <form action="modificar_servicio.php?servicio=<?php echo $clave_servicio ?>" method="post">
             <h1 class="form__title">Servicio</h1>
             <input type="text" name="descripcion" placeholder="Descripción" required class="form__input" autofocus value="<?php echo $servicio['descripcion_servicio'] ?>"><br>
-            <input type="text" name="precio" placeholder="Precio" required class="form__input" value="<?php echo $servicio['precio_servicio'] ?>"><br>
+            $<input type="number" min="1" name="precio" placeholder="Precio ($)" required class="form__input" value="<?php echo $servicio['precio_servicio'] ?>"><br>
             <input type="text" name="tipo" placeholder="Tipo" required class="form__input" value="<?php echo $servicio['tipo_servicio'] ?>"><br>
             <div class="date">
                 <label for="periodicidad" class="date__label">Periodicidad</label>

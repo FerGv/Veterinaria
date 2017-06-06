@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/fonts/styles.css">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
@@ -25,6 +26,9 @@
             align-self: center;
             background: rgba(255,255,255,0.9);
         }
+        .ver-icon {
+            font-size: 2em;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +38,7 @@
             <input type="text" name="nombre" placeholder="Nombre" required class="form__input" autofocus>
             <div class="password">
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required class="form__input password__input">
-                <input type="button" value="Ver" onclick="Mostrar_Pass()" class="form__button password__button">
+                <a href="#" onclick="Mostrar_Pass()"><i class="icon-see ver-icon" id="eye"></i></a>
             </div><br>     
             <input type="submit" value="Ingresar" class="form__button">        
         </form>

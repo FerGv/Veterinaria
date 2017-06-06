@@ -23,7 +23,7 @@
             exit;
         }
 
-        $crear_medico = "INSERT INTO medico VALUES ('$rfc', '$nombre', '$direccion', '$telefono', '$email')";
+        $crear_medico = "INSERT INTO medico VALUES ('$rfc', '$nombre', '$direccion', $telefono, '$email', 1)";
         $crear_usuario = "INSERT INTO usuario VALUES ('$rfc', 'veterinaria123', 2)";
         $resultado_medico = mysqli_query($conexion, $crear_medico);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);

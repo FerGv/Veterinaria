@@ -92,7 +92,7 @@
         <h1 class="wrap__title">Consultas</h1>
         <?php 
             if (mysqli_num_rows($resultado_control) == 0) {
-                echo "Sin consultas";
+                echo "<h1>Sin consultas</h1>";
             } else {
                 while($control = mysqli_fetch_assoc($resultado_control)) {
                     $buscar_cita = mysqli_query($conexion, "SELECT clave_cita FROM cita,control_servicio,historial WHERE control_servicio.clave_control_servicio='$control[clave_control_servicio]' AND historial.clave_control_servicio = '$control[clave_control_servicio]' AND cita.id_mascota = control_servicio.id_mascota AND cita.fecha_cita = historial.fechaseg_historial");
@@ -117,13 +117,13 @@
                 <p class="card__data"><?php echo $mascota['nombre_mascota'] ?></p>
 
                 <?php 
-                    $buscar_medico = mysqli_query($conexion, "SELECT medico.nombre_medico AS nombre_medico FROM control_servicio JOIN medico WHERE control_servicio.rfc_medico = medico.rfc_medico"); 
+                    $buscar_medico = mysqli_query($conexion, "SELECT medico.nombre_medico AS nombre_medico FROM control_servicio, medico WHERE control_servicio.rfc_medico = medico.rfc_medico"); 
                     $medico = mysqli_fetch_assoc($buscar_medico);
                 ?>
                 <p class="card__data"><?php echo $medico['nombre_medico'] ?></p>
 
                 <?php 
-                    $buscar_servicios = "SELECT servicio.descripcion_servicio AS descripcion_servicio FROM control_servicio_servicio JOIN servicio WHERE control_servicio_servicio.clave_servicio = servicio.clave_servicio AND control_servicio_servicio.clave_control_servicio = '$control[clave_control_servicio]'";
+                    $buscar_servicios = "SELECT servicio.descripcion_servicio AS descripcion_servicio FROM control_servicio_servicio, servicio WHERE control_servicio_servicio.clave_servicio = servicio.clave_servicio AND control_servicio_servicio.clave_control_servicio = '$control[clave_control_servicio]'";
                     $resultado_servicio = mysqli_query($conexion, $buscar_servicios);
                     while($servicio = mysqli_fetch_assoc($resultado_servicio)) { 
                 ?>

@@ -68,3 +68,9 @@
 .icon-logout:before {
   content: "\6a";
 }
+.icon-see:before {
+  content: "\6b";
+}
+.icon-not-see:before {
+  content: "\6c";
+}

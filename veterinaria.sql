@@ -51,7 +51,7 @@ CREATE TABLE factura (
 
 CREATE TABLE historial (
   id_mascota int NOT NULL,
-  fechaseg_historial date NOT NULL,
+  fechaseg_historial date,
   clave_control_servicio int NOT NULL
 ) ENGINE=InnoDB;
 

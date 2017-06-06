@@ -22,10 +22,10 @@
         }
 
         if ($periodicidad = $_POST['periodicidad']) {
-            $crear_servicio = "INSERT INTO servicio(descripcion_servicio, precio_servicio, tipo_servicio, periodicidad_servicio) VALUES ('$descripcion', '$precio', '$tipo', '$periodicidad')";
+            $crear_servicio = "INSERT INTO servicio(descripcion_servicio, precio_servicio, tipo_servicio, periodicidad_servicio, estado_servicio) VALUES ('$descripcion', $precio, '$tipo', '$periodicidad', 1)";
         }
         else {
-            $crear_servicio = "INSERT INTO servicio(descripcion_servicio, precio_servicio, tipo_servicio) VALUES ('$descripcion', '$precio', '$tipo')";
+            $crear_servicio = "INSERT INTO servicio(descripcion_servicio, precio_servicio, tipo_servicio, estado_servicio) VALUES ('$descripcion', $precio, '$tipo', 1)";
         }
         
         $resultado_servicio = mysqli_query($conexion, $crear_servicio);

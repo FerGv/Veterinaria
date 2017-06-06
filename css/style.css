@@ -350,7 +350,7 @@ input[type="checkbox"]:checked + label:before {
 }
 .card {
     min-width: 250px;
-    width: 20%;
+    width: 30%;
     border: 1px solid rgba(0,0,0,0.3);
     margin: 10px 20px;
     box-shadow: 0 3px 3px rgba(0,0,0,0.8);

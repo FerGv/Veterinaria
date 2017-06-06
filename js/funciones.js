@@ -1,9 +1,12 @@
 function Mostrar_Pass() {
     let pass = document.getElementById('pass');
+    let eye = document.getElementById('eye');
     if (pass.type == 'password') {
         pass.type = 'text';
+        eye.className = eye.className.replace('icon-see', 'icon-not-see');
     } else {
         pass.type = 'password';
+        eye.className = eye.className.replace('icon-not-see', 'icon-see');
     }
 }
 

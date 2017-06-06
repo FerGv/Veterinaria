@@ -96,7 +96,20 @@
                 <label for="fecha" class="date__label">Fecha de Nacimiento</label>
                 <input type="date" name="fecha_nacimiento" id="fecha" required class="date__input">
             </div><br>
-            <input type="text" name="rfc" placeholder="RFC Cliente" required class="form__input" <?php if (@$_GET['cliente']) {echo "value='$_GET[cliente]' disabled";} ?>><br>
+            <?php if (@$_GET['cliente']): ?>
+                <input type="text" name="rfc" placeholder="RFC Cliente" required class="form__input" <?php echo "value='$_GET[cliente]' disabled"; ?>><br>
+            <?php else: 
+                include("../conexion.php");
+                $buscar_clientes = "SELECT rfc_cliente FROM cliente WHERE estado_cliente = 1";
+                $resultado_clientes = mysqli_query($conexion, $buscar_clientes);
+            ?>
+                <select required class="form__input" name="rfc">
+                    <option>Seleccione un cliente</option>
+                    <?php while($cliente = mysqli_fetch_assoc($resultado_clientes)): ?>
+                        <option value="<?php echo $cliente['rfc_cliente'] ?>"><?php echo $cliente['rfc_cliente'] ?></option>
+                    <?php endwhile; ?>
+                </select>
+            <?php endif; ?>
             <input type="submit" value="Registrar" class="form__button">
         </form>
     </section>
