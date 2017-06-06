@@ -104,7 +104,11 @@
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item" onclick="return Confirmar_Eliminar()"><i class="icon-delete"></i></a>
+                            
+                            <?php if ($_SESSION['tipo'] == 0): ?>
+                                <a href="eliminar_control.php?control=<?php echo $control['clave_control_servicio'] ?>&cita=<?php echo $cita['clave_cita'] ?>" class="card--title__item" onclick="return Confirmar_Eliminar()"><i class="icon-delete"></i></a>
+                            <?php endif; ?>
+
                             <a href="../factura/alta_factura.php?control=<?php echo $control['clave_control_servicio'] ?>" onclick="return Confirmar_Factura()" class="card--title__item"><i class="icon-file"></i></a>
                         </nav>
                     <?php } ?>
@@ -114,27 +118,29 @@
                     $buscar_mascota = mysqli_query($conexion, "SELECT nombre_mascota FROM control_servicio, mascota WHERE clave_control_servicio = '$control[clave_control_servicio]' AND mascota.id_mascota = control_servicio.id_mascota"); 
                     $mascota = mysqli_fetch_assoc($buscar_mascota);
                 ?>
-                <p class="card__data"><?php echo $mascota['nombre_mascota'] ?></p>
+                <p class="card__data"><b>Mascota:</b> <?php echo $mascota['nombre_mascota'] ?></p>
 
                 <?php 
                     $buscar_medico = mysqli_query($conexion, "SELECT medico.nombre_medico AS nombre_medico FROM control_servicio, medico WHERE control_servicio.rfc_medico = medico.rfc_medico"); 
                     $medico = mysqli_fetch_assoc($buscar_medico);
                 ?>
-                <p class="card__data"><?php echo $medico['nombre_medico'] ?></p>
+                <p class="card__data"><b>Médico:</b> <?php echo $medico['nombre_medico'] ?></p>
 
                 <?php 
                     $buscar_servicios = "SELECT servicio.descripcion_servicio AS descripcion_servicio FROM control_servicio_servicio, servicio WHERE control_servicio_servicio.clave_servicio = servicio.clave_servicio AND control_servicio_servicio.clave_control_servicio = '$control[clave_control_servicio]'";
                     $resultado_servicio = mysqli_query($conexion, $buscar_servicios);
                     while($servicio = mysqli_fetch_assoc($resultado_servicio)) { 
                 ?>
-                    <p class="card__data"><?php echo $servicio['descripcion_servicio'] ?></p>
+                    <p class="card__data"><b>Servicio:</b> <?php echo $servicio['descripcion_servicio'] ?></p>
                 <?php } ?>
                 
                 <?php 
                     $buscar_historial = mysqli_query($conexion, "SELECT fechaseg_historial AS fecha_seg FROM historial,control_servicio WHERE historial.clave_control_servicio = '$control[clave_control_servicio]'"); 
                     $historial = mysqli_fetch_assoc($buscar_historial);
+                    if ($historial['fecha_seg'] != null) {
                 ?>
-                <p class="card__data"><?php echo $historial['fecha_seg'] ?></p>
+                    <p class="card__data"><b>Próxima consulta:</b> <?php echo $historial['fecha_seg'] ?></p>
+                <?php } ?>
             </div>
         <?php
             } }

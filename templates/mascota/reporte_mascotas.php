@@ -110,16 +110,18 @@
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php if ($_SESSION['tipo'] == 0): ?>
+                                <a href="eliminar_mascota.php?mascota=<?php echo $mascota['id_mascota'] ?>&cliente=<?php echo $cliente ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php endif; ?>
                         </nav>
                     <?php } ?>
                 </div>
-                <p class="card__data"><?php echo $mascota['especie_mascota'] ?></p>
-                <p class="card__data"><?php echo $mascota['raza_mascota'] ?></p>
-                <p class="card__data"><?php echo $mascota['color_mascota'] ?></p>
-                <p class="card__data"><?php echo $mascota['tamanio_mascota'] ?></p>
-                <p class="card__data"><?php echo $mascota['seniapart_mascota'] ?></p>
-                <p class="card__data"><?php echo $mascota['fechanac_mascota'] ?></p>
+                <p class="card__data"><b>Especie:</b> <?php echo $mascota['especie_mascota'] ?></p>
+                <p class="card__data"><b>Raza:</b> <?php echo $mascota['raza_mascota'] ?></p>
+                <p class="card__data"><b>Color:</b> <?php echo $mascota['color_mascota'] ?></p>
+                <p class="card__data"><b>Tamaño:</b> <?php echo $mascota['tamanio_mascota'] ?></p>
+                <p class="card__data"><b>Seña particular:</b> <?php echo $mascota['seniapart_mascota'] ?></p>
+                <p class="card__data"><b>Fecha de nacimiento:</b> <?php echo $mascota['fechanac_mascota'] ?></p>
             </div>
         <?php
             endwhile;

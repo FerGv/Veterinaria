@@ -98,19 +98,20 @@
         ?>
             <div class="card">
                 <div class="card--title">
-                    <h1 class="card--title__name"><?php echo $servicio['clave_servicio'] ?></h1>
+                    <h1 class="card--title__name"><?php echo $servicio['descripcion_servicio'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2): ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_servicio.php?servicio=<?php echo $servicio['clave_servicio'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_servicio.php?servicio=<?php echo $servicio['clave_servicio'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php if ($_SESSION['tipo'] == 0): ?>
+                                <a href="eliminar_servicio.php?servicio=<?php echo $servicio['clave_servicio'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php endif; ?>
                         </nav>
                     <?php endif; ?>
                 </div>
-                <p class="card__data"><?php echo $servicio['descripcion_servicio'] ?></p>
-                <p class="card__data"><?php echo $servicio['precio_servicio'] ?></p>
-                <p class="card__data"><?php echo $servicio['tipo_servicio'] ?></p>
+                <p class="card__data"><b>Precio:</b> <?php echo $servicio['precio_servicio'] ?></p>
+                <p class="card__data"><b>Tipo:</b> <?php echo $servicio['tipo_servicio'] ?></p>
                 <?php if ($servicio['periodicidad_servicio'] != null): ?>
-                    <p class="card__data"><?php echo $servicio['periodicidad_servicio'] ?></p>
+                    <p class="card__data"><b>Periodicidad:</b> <?php echo $servicio['periodicidad_servicio'] ?></p>
                 <?php endif; ?>
             </div>
         <?php

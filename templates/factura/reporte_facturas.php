@@ -99,15 +99,14 @@
             <div class="card">
                 <div class="card--title">
                     <h1 class="card--title__name"><?php echo $factura['clave_factura'] ?></h1>
-                    <?php if ($_SESSION['tipo'] != 2) { ?>
+                    <?php if ($_SESSION['tipo'] == 0) { ?>
                         <nav class="card--title__menu">
                             <a href="eliminar_factura.php?factura=<?php echo $factura['clave_factura'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
                         </nav>
                     <?php } ?>
                 </div>
-                <p class="card__data"><?php echo $factura['fecha_factura'] ?></p>
-                <p class="card__data"><?php echo $factura['hora_factura'] ?></p>
-                <p class="card__data"><?php echo $factura['clave_control_servicio'] ?></p>
+                <p class="card__data"><b>Fecha:</b> <?php echo $factura['fecha_factura'] ?></p>
+                <p class="card__data"><b>Hora:</b> <?php echo $factura['hora_factura'] ?></p>
             </div>
         <?php
             } }

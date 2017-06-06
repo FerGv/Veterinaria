@@ -84,13 +84,13 @@
         </div>
     </header>
     <section class="wrap animated bounceInRight" id="wrap">
-        <form action="alta_cliente.php" method="post">
+        <form action="alta_cliente.php" method="post" onsubmit="return validar();">
             <h1 class="form__title">Cliente</h1>
-            <input type="text" name="rfc" placeholder="RFC" required class="form__input" autofocus><br>
-            <input type="text" name="nombre" placeholder="Nombre Completo" required class="form__input"><br>
-            <input type="text" name="direccion" placeholder="Dirección" required class="form__input"><br>
-            <input type="text" name="telefono" placeholder="Teléfono" required class="form__input"><br>
-            <input type="email" name="email" placeholder="Correo electrónico" required class="form__input"><br>
+            <input type="text" id="rfc" name="rfc" placeholder="RFC"  class="form__input" maxlength="15" autofocus><br>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo"  class="form__input"><br>
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección"  class="form__input"><br>
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono"  maxlength="10" class="form__input"><br>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico"  class="form__input"><br>
             <input type="submit" value="Registrar" class="form__button">
         </form>
     </section>
@@ -101,5 +101,6 @@
     </footer>
     
     <script src="../../js/funciones.js"></script>
+    <script src="../../js/form_cliente.js"></script>
 </body>
 </html>

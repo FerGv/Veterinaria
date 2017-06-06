@@ -92,24 +92,26 @@
         <h1 class="wrap__title">Clientes</h1>
         <?php 
             if (mysqli_num_rows($resultado) == 0) {
-                echo "Sin clientes";
+                echo "<h1>Sin clientes</h1>";
             } else {
                 while($cliente = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
                 <div class="card--title">
-                    <a href="../mascota/reporte_mascotas.php?cliente=<?php echo $cliente['rfc_cliente'] ?>"><h1 class="card--title__name"><?php echo $cliente['rfc_cliente'] ?></h1></a>
+                    <a href="../mascota/reporte_mascotas.php?cliente=<?php echo $cliente['rfc_cliente'] ?>"><h1 class="card--title__name"><?php echo $cliente['nombre_cliente'] ?></h1></a>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php if ($_SESSION['tipo'] == 0): ?>
+                                <a href="eliminar_cliente.php?cliente=<?php echo $cliente['rfc_cliente'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php endif; ?>
                         </nav>
                     <?php } ?>
                 </div>
-                <p class="card__data"><?php echo $cliente['nombre_cliente'] ?></p>
-                <p class="card__data"><?php echo $cliente['direccion_cliente'] ?></p>
-                <p class="card__data"><?php echo $cliente['telefono_cliente'] ?></p>
-                <p class="card__data"><?php echo $cliente['email_cliente'] ?></p>
+                <p class="card__data"><b>RFC:</b> <?php echo $cliente['rfc_cliente'] ?></p>
+                <p class="card__data"><b>Dirección:</b> <?php echo $cliente['direccion_cliente'] ?></p>
+                <p class="card__data"><b>Teléfono:</b> <?php echo $cliente['telefono_cliente'] ?></p>
+                <p class="card__data"><b>Email:</b> <?php echo $cliente['email_cliente'] ?></p>
             </div>
         <?php
             } }

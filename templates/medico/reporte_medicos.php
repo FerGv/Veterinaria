@@ -99,18 +99,20 @@
         ?>
             <div class="card">
                 <div class="card--title">
-                    <h1 class="card--title__name"><?php echo $medico['rfc_medico'] ?></h1>
+                    <h1 class="card--title__name"><?php echo $medico['nombre_medico'] ?></h1>
                     <?php if ($_SESSION['tipo'] != 2) { ?>
                         <nav class="card--title__menu">
                             <a href="form_modificar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
-                            <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php if ($_SESSION['tipo'] == 0): ?>
+                                <a href="eliminar_medico.php?medico=<?php echo $medico['rfc_medico'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                            <?php endif; ?>
                         </nav>
                     <?php } ?>
                 </div>
-                <p class="card__data"><?php echo $medico['nombre_medico'] ?></p>
-                <p class="card__data"><?php echo $medico['direccion_medico'] ?></p>
-                <p class="card__data"><?php echo $medico['telefono_medico'] ?></p>
-                <p class="card__data"><?php echo $medico['email_medico'] ?></p>
+                <p class="card__data"><b>RFC:</b> <?php echo $medico['rfc_medico'] ?></p>
+                <p class="card__data"><b>Dirección:</b> <?php echo $medico['direccion_medico'] ?></p>
+                <p class="card__data"><b>Teléfono:</b> <?php echo $medico['telefono_medico'] ?></p>
+                <p class="card__data"><b>Email:</b> <?php echo $medico['email_medico'] ?></p>
             </div>
         <?php
             endwhile;

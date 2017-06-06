@@ -11,10 +11,10 @@
         $fecha = date('Y-m-d');
         $hora = date('H:i:s');
 
-        // $crear_factura = "INSERT INTO factura(fecha_factura, hora_factura, clave_control_servicio) VALUES ('$fecha', '$hora', '$control')";
-        // $resultado_factura = mysqli_query($conexion, $crear_factura);
+        $crear_factura = "INSERT INTO factura(fecha_factura, hora_factura, clave_control_servicio) VALUES ('$fecha', '$hora', '$control')";
+        $resultado_factura = mysqli_query($conexion, $crear_factura);
         
-        $buscar_datos = "SELECT nombre_cliente, nombre_mascota, nombre_medico FROM control_servicio, mascota, cliente, medico WHERE clave_control_servicio = $control AND control_servicio.id_mascota = mascota.id_mascota AND mascota.rfc_cliente = cliente.rfc_cliente AND control_servicio.rfc_medico = medico.rfc_medico";
+        $buscar_datos = "SELECT nombre_cliente, nombre_mascota, nombre_medico FROM control_servicio, mascota, cliente, medico WHERE control_servicio.clave_control_servicio = $control AND control_servicio.id_mascota = mascota.id_mascota AND mascota.rfc_cliente = cliente.rfc_cliente AND control_servicio.rfc_medico = medico.rfc_medico";
         $resultado_datos = mysqli_query($conexion, $buscar_datos);
         $datos = mysqli_fetch_assoc($resultado_datos);
 

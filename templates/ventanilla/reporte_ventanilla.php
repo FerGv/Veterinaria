@@ -1,20 +1,20 @@
 <?php 
     session_start();
-    if (!$_SESSION || $_SESSION['tipo'] != 2) {
+    if (!$_SESSION || $_SESSION['tipo'] != 0) {
         header("Location:../form_login.php");
     }
     else {
         include("../conexion.php");
-        // $buscar_citas = "SELECT nombre_mascota,fechaseg_historial FROM mascota, historial WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND historial.id_mascota=mascota.id_mascota ORDER BY fechaseg_historial ASC";
-        $buscar_citas = "SELECT nombre_mascota,fecha_cita FROM cita,mascota WHERE rfc_cliente='$_SESSION[nombre]' AND cita.id_mascota=mascota.id_mascota ORDER BY fecha_cita ASC";
-        $resultado = mysqli_query($conexion, $buscar_citas);
+        $buscar_empleados = "SELECT * FROM empleado WHERE estado_empleado = 1";
+        $resultado = mysqli_query($conexion, $buscar_empleados);
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte citas</title>
+    <title>Reporte empleados</title>
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
@@ -29,8 +29,8 @@
                         <li class="categoria">
                             <input type="button" class="header--menu__link" onclick="Mostrar_Clientes()" value="Clientes">
                             <ul id="funciones_clientes" style="height: 0px">
-                                <li><a href="..cliente/form_alta_cliente.php" class="header--menu__link">Registrar cliente</a></li>
-                                <li><a href="..cliente/reporte_clientes.php" class="header--menu__link">Reporte clientes</a></li>
+                                <li><a href="form_alta_cliente.php" class="header--menu__link">Registrar cliente</a></li>
+                                <li><a href="reporte_clientes.php" class="header--menu__link">Reporte clientes</a></li>
                             </ul>
                         </li>
                         <li class="categoria">
@@ -74,8 +74,8 @@
                         <a href="../mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="header--menu__link">Consultar mascotas</a>
                     </li>
                     <li class="categoria">
-                        <a href="form_alta_cita.php" class="header--menu__link">Agendar cita</a>
-                        <a href="reporte_citas.php" class="header--menu__link">Consultar citas</a>
+                        <a href="../cita/form_alta_cita.php" class="header--menu__link">Agendar cita</a>
+                        <a href="../cita/reporte_citas.php" class="header--menu__link">Consultar citas</a>
                     </li>
                 </ul>
                 <?php } ?>
@@ -89,32 +89,30 @@
         </div>
     </header>
     <section class="wrap animated bounceInRight" id="wrap">
-        <h1 class="wrap__title">Citas</h1>
+        <h1 class="wrap__title">Empleados</h1>
         <?php 
-            if (mysqli_num_rows($resultado) == 0):
-                echo "<h1>Sin citas</h1>";
-            else:
-                while($cita = mysqli_fetch_assoc($resultado)):
-                    $cita_fecha = $cita['fecha_cita'];
-                    $cita_dia = $cita_fecha[8].$cita_fecha[9];
-                    $cita_mes = $cita_fecha[5].$cita_fecha[6];
-                    $cita_anio = $cita_fecha[0].$cita_fecha[1].$cita_fecha[2].$cita_fecha[3];
-                    $hoy = date('Y-m-d');
-                    $hoy_dia = $hoy[8].$hoy[9];
-                    $hoy_mes = $hoy[5].$hoy[6];
-                    $hoy_anio = $hoy[0].$hoy[1].$hoy[2].$hoy[3];
-                    if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes && $hoy_dia <= $cita_dia):
+            if (mysqli_num_rows($resultado) == 0) {
+                echo "<h1>Sin empleados</h1>";
+            } else {
+                while($empleado = mysqli_fetch_assoc($resultado)) {
         ?>
             <div class="card">
                 <div class="card--title">
-                    <h1 class="card--title__name"><?php echo $cita['nombre_mascota'] ?></h1>
+                    <a href="../mascota/reporte_mascotas.php?empleado=<?php echo $empleado['rfc_empleado'] ?>"><h1 class="card--title__name"><?php echo $empleado['nombre_empleado'] ?></h1></a>
+                    <?php if ($_SESSION['tipo'] != 2) { ?>
+                        <nav class="card--title__menu">
+                            <a href="form_modificar_empleado.php?empleado=<?php echo $empleado['rfc_empleado'] ?>" class="card--title__item"><i class="icon-edit"></i></a>
+                            <a href="eliminar_empleado.php?empleado=<?php echo $empleado['rfc_empleado'] ?>" onclick="return Confirmar_Eliminar()" class="card--title__item"><i class="icon-delete"></i></a>
+                        </nav>
+                    <?php } ?>
                 </div>
-                <p class="card__data"><b>Fecha:</b> <?php echo $cita['fecha_cita'] ?></p>
+                <p class="card__data"><b>RFC:</b> <?php echo $empleado['rfc_empleado'] ?></p>
+                <p class="card__data"><b>Dirección:</b> <?php echo $empleado['direccion_empleado'] ?></p>
+                <p class="card__data"><b>Teléfono:</b> <?php echo $empleado['telefono_empleado'] ?></p>
+                <p class="card__data"><b>Email:</b> <?php echo $empleado['email_empleado'] ?></p>
             </div>
         <?php
-                    endif;
-                endwhile;
-            endif;
+            } }
             mysqli_close($conexion);
         ?>
     </section>

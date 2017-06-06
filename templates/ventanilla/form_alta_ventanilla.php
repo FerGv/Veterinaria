@@ -1,20 +1,15 @@
 <?php 
     session_start();
-    if (!$_SESSION || $_SESSION['tipo'] != 2) {
+    if (!$_SESSION || $_SESSION['tipo'] != 0) {
         header("Location:../form_login.php");
     }
-    else {
-        include("../conexion.php");
-        // $buscar_citas = "SELECT nombre_mascota,fechaseg_historial FROM mascota, historial WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND historial.id_mascota=mascota.id_mascota ORDER BY fechaseg_historial ASC";
-        $buscar_citas = "SELECT nombre_mascota,fecha_cita FROM cita,mascota WHERE rfc_cliente='$_SESSION[nombre]' AND cita.id_mascota=mascota.id_mascota ORDER BY fecha_cita ASC";
-        $resultado = mysqli_query($conexion, $buscar_citas);
-    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte citas</title>
+    <title>Formulario</title>
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/fonts/styles.css">
@@ -29,8 +24,8 @@
                         <li class="categoria">
                             <input type="button" class="header--menu__link" onclick="Mostrar_Clientes()" value="Clientes">
                             <ul id="funciones_clientes" style="height: 0px">
-                                <li><a href="..cliente/form_alta_cliente.php" class="header--menu__link">Registrar cliente</a></li>
-                                <li><a href="..cliente/reporte_clientes.php" class="header--menu__link">Reporte clientes</a></li>
+                                <li><a href="form_alta_cliente.php" class="header--menu__link">Registrar cliente</a></li>
+                                <li><a href="reporte_clientes.php" class="header--menu__link">Reporte clientes</a></li>
                             </ul>
                         </li>
                         <li class="categoria">
@@ -74,8 +69,8 @@
                         <a href="../mascota/reporte_mascotas.php?cliente=<?php echo $_SESSION['nombre']; ?>" class="header--menu__link">Consultar mascotas</a>
                     </li>
                     <li class="categoria">
-                        <a href="form_alta_cita.php" class="header--menu__link">Agendar cita</a>
-                        <a href="reporte_citas.php" class="header--menu__link">Consultar citas</a>
+                        <a href="../cita/form_alta_cita.php" class="header--menu__link">Agendar cita</a>
+                        <a href="../cita/reporte_citas.php" class="header--menu__link">Consultar citas</a>
                     </li>
                 </ul>
                 <?php } ?>
@@ -89,41 +84,23 @@
         </div>
     </header>
     <section class="wrap animated bounceInRight" id="wrap">
-        <h1 class="wrap__title">Citas</h1>
-        <?php 
-            if (mysqli_num_rows($resultado) == 0):
-                echo "<h1>Sin citas</h1>";
-            else:
-                while($cita = mysqli_fetch_assoc($resultado)):
-                    $cita_fecha = $cita['fecha_cita'];
-                    $cita_dia = $cita_fecha[8].$cita_fecha[9];
-                    $cita_mes = $cita_fecha[5].$cita_fecha[6];
-                    $cita_anio = $cita_fecha[0].$cita_fecha[1].$cita_fecha[2].$cita_fecha[3];
-                    $hoy = date('Y-m-d');
-                    $hoy_dia = $hoy[8].$hoy[9];
-                    $hoy_mes = $hoy[5].$hoy[6];
-                    $hoy_anio = $hoy[0].$hoy[1].$hoy[2].$hoy[3];
-                    if ($hoy_anio <= $cita_anio && $hoy_mes <= $cita_mes && $hoy_dia <= $cita_dia):
-        ?>
-            <div class="card">
-                <div class="card--title">
-                    <h1 class="card--title__name"><?php echo $cita['nombre_mascota'] ?></h1>
-                </div>
-                <p class="card__data"><b>Fecha:</b> <?php echo $cita['fecha_cita'] ?></p>
-            </div>
-        <?php
-                    endif;
-                endwhile;
-            endif;
-            mysqli_close($conexion);
-        ?>
+        <form action="alta_ventanilla.php" method="post" onsubmit="return validar();">
+            <h1 class="form__title">Empleado</h1>
+            <input type="text" id="rfc" name="rfc" placeholder="RFC"  class="form__input" maxlength="15" autofocus><br>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo"  class="form__input"><br>
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección"  class="form__input"><br>
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono"  maxlength="10" class="form__input"><br>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico"  class="form__input"><br>
+            <input type="submit" value="Registrar" class="form__button">
+        </form>
     </section>
     <footer>
         <div class="copy">
             <a href="../innovasoft.html">&copy Innovasoft 2017</a>
         </div>
     </footer>
-
+    
     <script src="../../js/funciones.js"></script>
+    <script src="../../js/form_cliente.js"></script>
 </body>
 </html>

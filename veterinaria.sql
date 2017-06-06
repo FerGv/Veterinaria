@@ -41,6 +41,16 @@ CREATE TABLE control_servicio_servicio (
   clave_servicio int NOT NULL
 ) ENGINE=InnoDB;
 
+CREATE TABLE empleado (
+  rfc_empleado varchar(15) NOT NULL,
+  nombre_empleado varchar(50) NOT NULL,
+  direccion_empleado varchar(50) NOT NULL,
+  telefono_empleado int NOT NULL,
+  email_empleado varchar(30) NOT NULL,
+  estado_empleado int NOT NULL,
+  PRIMARY KEY (rfc_empleado)
+) ENGINE=InnoDB;
+
 CREATE TABLE factura (
   clave_factura int NOT NULL AUTO_INCREMENT,
   fecha_factura date NOT NULL,
@@ -133,6 +143,7 @@ SELECT * FROM cita;
 SELECT * FROM cliente;
 SELECT * FROM control_servicio;
 SELECT * FROM control_servicio_servicio;
+SELECT * FROM empleado;
 SELECT * FROM factura;
 SELECT * FROM historial;
 SELECT * FROM mascota;
@@ -147,6 +158,7 @@ SHOW COLUMNS FROM cita; 						-- DESCRIBE cita;
 SHOW COLUMNS FROM cliente; 						-- DESCRIBE cliente;
 SHOW COLUMNS FROM control_servicio; 			-- DESCRIBE control_servicio;
 SHOW COLUMNS FROM control_servicio_servicio; 	-- DESCRIBE control_servicio_servicio;
+SHOW COLUMNS FROM empleado; 					-- DESCRIBE empleado;
 SHOW COLUMNS FROM factura; 						-- DESCRIBE factura;
 SHOW COLUMNS FROM historial; 					-- DESCRIBE historial;
 SHOW COLUMNS FROM mascota; 						-- DESCRIBE mascota;

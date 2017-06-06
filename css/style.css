@@ -139,9 +139,9 @@ footer {
 ********************************************************/
 .contenido {
     align-self: center;
-    width: 70%;
+    width: 60%;
     height: auto;
-    max-width: 500px;
+    max-width: 600px;
     padding: 20px 0;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.5);
@@ -153,9 +153,13 @@ footer {
     margin-bottom: 30px;
     color: rgba(0,0,100,0.8);
 }
+.contenido__create, .contenido__report {
+    width: 50%;
+    float: left;
+}
 .contenido__link {
     color: #fff !IMPORTANT;
-    width: 80%;
+    width: 70%;
     margin: 0 auto 5px;
     display: block;
     padding: 15px 0;

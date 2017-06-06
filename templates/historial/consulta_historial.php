@@ -110,15 +110,16 @@
                 <div class="card--title">
                     <h1 class="card--title__name"><?php echo $historial['fecha_control'] ?></h1>
                 </div>
-                <p class="card__data"><?php echo $historial['nombre_medico'] ?></p>
+                <p class="card__data"><b>Médico:</b> <?php echo $historial['nombre_medico'] ?></p>
                 <?php 
                     $buscar_servicios = "SELECT descripcion_servicio FROM control_servicio_servicio, servicio WHERE control_servicio_servicio.clave_servicio = servicio.clave_servicio AND control_servicio_servicio.clave_control_servicio = '$historial[clave_control_servicio]'";
                     $resultado_servicio = mysqli_query($conexion, $buscar_servicios);
                     while($servicio = mysqli_fetch_assoc($resultado_servicio)) { 
                 ?>
-                    <p class="card__data"><?php echo $servicio['descripcion_servicio'] ?></p>
+                    <p class="card__data"><b>Servicio:</b> <?php echo $servicio['descripcion_servicio'] ?></p>
+                <?php } if($historial['fechaseg_historial'] != null) { ?>
+                    <p class="card__data"><b>Próxima consulta:</b>  <?php echo $historial['fechaseg_historial'] ?></p>
                 <?php } ?>
-                <p class="card__data"><?php echo $historial['fechaseg_historial'] ?></p>
             </div>
         <?php
              } }

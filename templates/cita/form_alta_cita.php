@@ -3,6 +3,11 @@
     if (!$_SESSION || $_SESSION['tipo'] != 2) {
         header("Location:../form_login.php");
     }
+ 
+    include("../conexion.php");
+
+    $buscar_mascotas = "SELECT id_mascota, nombre_mascota FROM mascota WHERE rfc_cliente = '$_SESSION[nombre]'";
+    $resultado_mascotas = mysqli_query($conexion, $buscar_mascotas);
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +91,12 @@
     <section class="wrap" id="wrap">
         <form action="alta_cita.php" method="post" class="animated bounceInRight">
             <h1 class="form__title">Agendar Cita</h1>
-            <input type="text" name="nombre_mascota" placeholder="Nombre mascota" required class="form__input" autofocus><br>
+            <select required class="form__input" name="id_mascota">
+                <option>Seleccione una mascota</option>
+                <?php while($mascota = mysqli_fetch_assoc($resultado_mascotas)): ?>
+                    <option value="<?php echo $mascota['id_mascota'] ?>"><?php echo $mascota['nombre_mascota'] ?></option>
+                <?php endwhile; ?>
+            </select>
             <div class="date">
                 <label for="fecha" class="date__label">Fecha</label>
                 <input type="date" name="fecha_cita" id="fecha" required class="date__input">
