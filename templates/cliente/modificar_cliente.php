@@ -27,7 +27,7 @@
             $resultado = mysqli_query($conexion, $modificar_cliente);
         endif;
 
-        echo "<script>alert('Cliente modificado con éxito.');</script>";
+        // echo "<script>alert('Cliente modificado con éxito.');</script>";
         header("Location:reporte_clientes.php");
 
         mysqli_close($conexion);

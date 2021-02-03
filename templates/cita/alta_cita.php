@@ -15,7 +15,7 @@
         $crear_cita = "INSERT INTO cita(fecha_cita, id_mascota) VALUES ('$fecha_cita', $id_mascota)";
         $resultado_cita = mysqli_query($conexion, $crear_cita);
 
-        echo "<script>alert('Cita registrada con éxito.');</script>";
+        // echo "<script>alert('Cita registrada con éxito.');</script>";
         header("Location:reporte_citas.php");
 
         mysqli_close($conexion);

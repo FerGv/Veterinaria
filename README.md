@@ -7,4 +7,4 @@ Requisitos:
 - Apache
 
 Notas:
-- Importar el query 'veterinaria.sql'.
+- Importar el query 'veterinary_load.sql'.

@@ -28,7 +28,7 @@
         $resultado_empleado = mysqli_query($conexion, $crear_empleado);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);
 
-        echo "<script>alert('empleado registrado con éxito.');</script>";
+        // echo "<script>alert('empleado registrado con éxito.');</script>";
         header("Location:reporte_ventanilla.php");
 
         mysqli_close($conexion);

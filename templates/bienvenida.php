@@ -1,3 +1,30 @@
+<?php
+    session_start();
+    if (!$_SESSION) {
+        header("Location:form_login.php");
+    }
+    else {
+        include("conexion.php");
+        if ($_SESSION['tipo'] == 2) {
+            $obtener_nombre = "SELECT * FROM cliente WHERE rfc_cliente='$_SESSION[nombre]'";
+            $resultado = mysqli_query($conexion, $obtener_nombre);
+            $usuario = mysqli_fetch_assoc($resultado);
+            $nombre = $usuario['nombre_cliente'];
+
+            $fecha = date('Y-m-d');
+            $obtener_avisos = mysqli_query($conexion, "SELECT nombre_mascota, fecha_cita FROM mascota, cita WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND cita.id_mascota=mascota.id_mascota");
+        }
+        else if ($_SESSION['tipo'] == 1) {
+            $obtener_nombre = "SELECT * FROM empleado WHERE rfc_empleado='$_SESSION[nombre]'";
+            $resultado = mysqli_query($conexion, $obtener_nombre);
+            $usuario = mysqli_fetch_assoc($resultado);
+            $nombre = $usuario['nombre_empleado'];
+        } else {
+            $nombre = $_SESSION['nombre'];
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,32 +33,6 @@
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/fonts/styles.css">
-    <?php 
-        session_start();
-        if (!$_SESSION) {
-            header("Location:form_login.php");
-        }
-        else {
-            include("conexion.php");
-            if ($_SESSION['tipo'] == 2) {
-                $obtener_nombre = "SELECT * FROM cliente WHERE rfc_cliente='$_SESSION[nombre]'";
-                $resultado = mysqli_query($conexion, $obtener_nombre);
-                $usuario = mysqli_fetch_assoc($resultado);
-                $nombre = $usuario['nombre_cliente'];
-
-                $fecha = date('Y-m-d');
-                $obtener_avisos = mysqli_query($conexion, "SELECT nombre_mascota, fecha_cita FROM mascota, cita WHERE mascota.rfc_cliente='$_SESSION[nombre]' AND cita.id_mascota=mascota.id_mascota");
-            }
-            else if ($_SESSION['tipo'] == 1) {
-                $obtener_nombre = "SELECT * FROM empleado WHERE rfc_empleado='$_SESSION[nombre]'";
-                $resultado = mysqli_query($conexion, $obtener_nombre);
-                $usuario = mysqli_fetch_assoc($resultado);
-                $nombre = $usuario['nombre_empleado'];
-            } else {
-                $nombre = $_SESSION['nombre'];
-            }
-        }
-    ?>
 </head>
 <body>
     <header>

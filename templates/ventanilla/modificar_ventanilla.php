@@ -18,7 +18,7 @@
         $modificar_empleado = "UPDATE empleado SET rfc_empleado='$rfc', nombre_empleado='$nombre', direccion_empleado='$direccion', telefono_empleado='$telefono', email_empleado='$email' WHERE rfc_empleado='$empleado'";
         $resultado = mysqli_query($conexion, $modificar_empleado);
 
-        echo "<script>alert('empleado modificado con éxito.');</script>";
+        // echo "<script>alert('empleado modificado con éxito.');</script>";
         header("Location:reporte_empleados.php");
 
         mysqli_close($conexion);

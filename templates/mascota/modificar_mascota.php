@@ -21,7 +21,7 @@
         $modificar_mascota = "UPDATE mascota SET nombre_mascota='$nombre', especie_mascota='$especie', raza_mascota='$raza', color_mascota='$color', tamanio_mascota='$tamanio', seniapart_mascota='$senia_particular', fechanac_mascota='$fecha_nacimiento' WHERE id_mascota='$id_mascota' AND rfc_cliente='$cliente'";
         $resultado = mysqli_query($conexion, $modificar_mascota);
 
-        echo "<script>alert('Mascota modificada con éxito.');</script>";
+        // echo "<script>alert('Mascota modificada con éxito.');</script>";
         header("Location:reporte_mascotas.php?cliente=$cliente");
 
         mysqli_close($conexion);

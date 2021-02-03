@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  php:
+    build: .
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 8000:80
+
+  db:
+    image: mysql:5
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: veterinary
+      MYSQL_DATABASE: veterinary
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3310:3306

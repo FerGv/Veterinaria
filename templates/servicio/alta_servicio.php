@@ -27,10 +27,10 @@
         else {
             $crear_servicio = "INSERT INTO servicio(descripcion_servicio, precio_servicio, tipo_servicio, estado_servicio) VALUES ('$descripcion', $precio, '$tipo', 1)";
         }
-        
+
         $resultado_servicio = mysqli_query($conexion, $crear_servicio);
 
-        echo "<script>alert('Servicio registrado con éxito.');</script>";
+        // echo "<script>alert('Servicio registrado con éxito.');</script>";
         header("Location:reporte_servicios.php");
 
         mysqli_close($conexion);

@@ -25,10 +25,10 @@
         else {
             $modificar_servicio = "UPDATE servicio SET descripcion_servicio='$descripcion', precio_servicio='$precio', tipo_servicio='$tipo' WHERE clave_servicio='$servicio'";
         }
-        
+
         $resultado = mysqli_query($conexion, $modificar_servicio);
 
-        echo "<script>alert('Servicio modificado con éxito.');</script>";
+        // echo "<script>alert('Servicio modificado con éxito.');</script>";
         header("Location:reporte_servicios.php");
 
         mysqli_close($conexion);

@@ -28,7 +28,7 @@
         $resultado_medico = mysqli_query($conexion, $crear_medico);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);
 
-        echo "<script>alert('Médico registrado con éxito.');</script>";
+        // echo "<script>alert('Médico registrado con éxito.');</script>";
         header("Location:reporte_medicos.php");
 
         mysqli_close($conexion);

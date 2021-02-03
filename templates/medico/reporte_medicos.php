@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
     if (!$_SESSION || $_SESSION['tipo'] == 2) {
         header("Location:../form_login.php");
@@ -90,10 +90,10 @@
     </header>
     <section class="wrap animated bounceInRight" id="wrap">
         <h1 class="wrap__title">Médicos</h1>
-        <?php 
+        <?php
             if (mysqli_num_rows($resultado) == 0):
                 echo "<h1>Sin médicos<h1>";
-                var_dump($resultado);
+                // var_dump($resultado);
             else:
             while($medico = mysqli_fetch_assoc($resultado)):
         ?>

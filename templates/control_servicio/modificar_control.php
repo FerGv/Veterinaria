@@ -42,10 +42,10 @@
         }
 
         $modificar_historial = mysqli_query($conexion, "UPDATE historial SET id_mascota='$mascota[id_mascota]', fechaseg_historial='$fecha_seguimiento' WHERE clave_control_servicio='$clave_control'");
-        
+
         $modificar_cita = mysqli_query($conexion, "UPDATE cita SET id_mascota='$mascota[id_mascota]', fecha_cita='$fecha_seguimiento' WHERE clave_cita='$cita'");
 
-        echo "<script>alert('Consulta modificada con éxito.');</script>";
+        // echo "<script>alert('Consulta modificada con éxito.');</script>";
         header("Location:reporte_control.php");
 
         mysqli_close($conexion);

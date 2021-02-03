@@ -1,16 +1,16 @@
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Creación de la base de datos
----------------------------------------------------------------------
-CREATE DATABASE veterinaria;
+-- ---------------------------------------------------------------------
+CREATE DATABASE veterinary;
 
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Cambiar a la base de datos creada
----------------------------------------------------------------------
-USE veterinaria;
+-- ---------------------------------------------------------------------
+USE veterinary;
 
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Creación de tablas
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 CREATE TABLE cita (
   clave_cita int NOT NULL AUTO_INCREMENT,
   fecha_cita date NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE cliente (
   rfc_cliente varchar(15) NOT NULL,
   nombre_cliente varchar(50) NOT NULL,
   direccion_cliente varchar(50) NOT NULL,
-  telefono_cliente int NOT NULL,
+  telefono_cliente varchar(15) NOT NULL,
   email_cliente varchar(30) NOT NULL,
   estado_cliente int NOT NULL,
   PRIMARY KEY (rfc_cliente)
@@ -105,9 +105,9 @@ CREATE TABLE usuario (
   PRIMARY KEY (nombre_usuario)
 ) ENGINE=InnoDB;
 
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 -- Creación de llaves foráneas
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 ALTER TABLE control_servicio
   ADD FOREIGN KEY (id_mascota) REFERENCES mascota (id_mascota) ON UPDATE CASCADE,
   ADD FOREIGN KEY (rfc_medico) REFERENCES medico (rfc_medico) ON UPDATE CASCADE;
@@ -125,48 +125,8 @@ ALTER TABLE historial
 
 ALTER TABLE mascota
   ADD FOREIGN KEY (rfc_cliente) REFERENCES cliente (rfc_cliente) ON UPDATE CASCADE;
-  
----------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------
 -- Inserción de datos
----------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 INSERT INTO usuario VALUES ('admin', '123', 0);
-
----------------------------------------------------------------------
--- Mostrar todas las tablas
----------------------------------------------------------------------
-SHOW TABLES;
-
----------------------------------------------------------------------
--- Mostrar todos los registros de las tablas
----------------------------------------------------------------------
-SELECT * FROM cita;
-SELECT * FROM cliente;
-SELECT * FROM control_servicio;
-SELECT * FROM control_servicio_servicio;
-SELECT * FROM empleado;
-SELECT * FROM factura;
-SELECT * FROM historial;
-SELECT * FROM mascota;
-SELECT * FROM medico;
-SELECT * FROM servicio;
-SELECT * FROM usuario;
-
----------------------------------------------------------------------
--- Mostrar la estructura de las tablas
----------------------------------------------------------------------
-SHOW COLUMNS FROM cita; 						-- DESCRIBE cita;
-SHOW COLUMNS FROM cliente; 						-- DESCRIBE cliente;
-SHOW COLUMNS FROM control_servicio; 			-- DESCRIBE control_servicio;
-SHOW COLUMNS FROM control_servicio_servicio; 	-- DESCRIBE control_servicio_servicio;
-SHOW COLUMNS FROM empleado; 					-- DESCRIBE empleado;
-SHOW COLUMNS FROM factura; 						-- DESCRIBE factura;
-SHOW COLUMNS FROM historial; 					-- DESCRIBE historial;
-SHOW COLUMNS FROM mascota; 						-- DESCRIBE mascota;
-SHOW COLUMNS FROM medico;					 	-- DESCRIBE medico;
-SHOW COLUMNS FROM servicio; 					-- DESCRIBE servicio;
-SHOW COLUMNS FROM usuario; 						-- DESCRIBE usuario;
-
----------------------------------------------------------------------
--- Borrar base de datos
----------------------------------------------------------------------
-DROP DATABASE veterinaria;

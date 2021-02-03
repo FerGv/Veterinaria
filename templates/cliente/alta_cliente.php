@@ -28,7 +28,7 @@
         $resultado_cliente = mysqli_query($conexion, $crear_cliente);
         $resultado_usuario = mysqli_query($conexion, $crear_usuario);
 
-        echo "<script>alert('Cliente registrado con éxito.');</script>";
+        // echo "<script>alert('Cliente registrado con éxito.');</script>";
         header("Location:../mascota/form_alta_mascota.php?cliente=$rfc");
 
         mysqli_close($conexion);

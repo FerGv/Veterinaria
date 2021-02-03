@@ -32,10 +32,10 @@
         }
 
         $crear_mascota = "INSERT INTO mascota(nombre_mascota, especie_mascota, raza_mascota, color_mascota, tamanio_mascota, seniapart_mascota, fechanac_mascota, rfc_cliente) VALUES ('$nombre', '$especie', '$raza', '$color', '$tamanio', '$senia_particular', '$fecha_nacimiento', '$cliente')";
-        
+
         $resultado_mascota = mysqli_query($conexion, $crear_mascota);
 
-        echo "<script>alert('Mascota registrada con éxito.');</script>";
+        // echo "<script>alert('Mascota registrada con éxito.');</script>";
         header("Location:reporte_mascotas.php?cliente=$cliente");
 
         mysqli_close($conexion);

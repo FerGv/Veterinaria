@@ -30,7 +30,7 @@
         $resultado = mysqli_query($conexion, $modificar_medico);
         endif;
 
-        echo "<script>alert('Mascota modificada con éxito.');</script>";
+        // echo "<script>alert('Mascota modificada con éxito.');</script>";
         header("Location:reporte_medicos.php");
 
         mysqli_close($conexion);
